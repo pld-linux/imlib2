@@ -26,8 +26,6 @@ BuildRequires:	libungif-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Obsoletes:	libimlib2_1
 
-%define		_prefix		/usr/X11R6
-%define		_mandir		%{_prefix}/man
 %define		_sysconfdir	/etc/X11
 
 %description
