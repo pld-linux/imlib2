@@ -17,3 +17,34 @@
  
  EXTRA_LIBS="-L/usr/local/lib -L/usr/X11R6/lib"
  
+--- imlib2-1.0.4/Makefile.am	Thu Dec  6 20:52:43 2001
++++ imlib2-1.0.4/Makefile.am.new	Thu Dec  6 20:52:06 2001
+@@ -9,7 +9,7 @@
+ 		       ltconfig ltmain.sh missing mkinstalldirs \
+ 		       stamp-h.in
+ 
+-SUBDIRS		     = libltdl src filters doc loaders
++SUBDIRS		     = src filters doc loaders
+ 
+ bin_SCRIPTS = imlib2-config
+ 
+--- imlib2-1.0.4/src/Makefile.am	Thu Aug  2 07:09:35 2001
++++ imlib2-1.0.4.new/src/Makefile.am	Thu Dec  6 22:12:21 2001
+@@ -31,16 +31,15 @@
+ 
+ if HAVE_MMX
+ libImlib2_la_LIBADD   = $(X_OBJS) @DLLDFLAGS@ $(MMX_OBJS) \
+-                       $(top_builddir)/libltdl/libltdlc.la \
+                        $(x_libs) -lttf $(LDFLAGS)
+ libImlib2_la_DEPENDENCIES = $(top_builddir)/config.h $(X_OBJS) $(MMX_OBJS)
+ else
+ libImlib2_la_LIBADD   = $(X_OBJS) @DLLDFLAGS@ \
+-                       $(top_builddir)/libltdl/libltdlc.la \
+                        $(x_libs) -lttf $(LDFLAGS)
+ libImlib2_la_DEPENDENCIES = $(top_builddir)/config.h $(X_OBJS)
+ endif
+ 
++
+ SYS_LOADERS_PATH = @pkglibdir@
+ image.lo: loaderpath.h
+ loaderpath.h: Makefile
