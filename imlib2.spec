@@ -7,12 +7,21 @@ Version:	1.0.5
 Release:	2
 License:	LGPL
 Group:		X11/Libraries
-Group(de):	X11/Libraries
+Group(cs):	X11/Knihovny
+Group(da):	X11/Biblioteker
+Group(de):	X11/Bibliotheken
 Group(es):	X11/Bibliotecas
 Group(fr):	X11/Librairies
+Group(is):	X11/Ağgerğasöfn
+Group(it):	X11/Librerie
+Group(ja):	X11/¥é¥¤¥Ö¥é¥ê
+Group(no):	X11/Biblioteker
 Group(pl):	X11/Biblioteki
 Group(pt_BR):	X11/Bibliotecas
+Group(pt):	X11/Bibliotecas
 Group(ru):	X11/âÉÂÌÉÏÔÅËÉ
+Group(sl):	X11/Knji¾nice
+Group(sv):	X11/Bibliotek
 Group(uk):	X11/â¦ÂÌ¦ÏÔÅËÉ
 Source0:	http://prdownloads.sourceforge.net/enlightenment/%{name}-%{version}.tar.gz
 Patch0:		%{name}-path.patch
@@ -56,12 +65,21 @@ Summary:	Imlib header files and development documentation
 Summary(fr):	Fichiers entête pour Imlib
 Summary(pl):	Pliki nag³ówkowe oraz dokumentacja do imlib
 Group:		X11/Development/Libraries
-Group(de):	X11/Entwicklung/Libraries
+Group(cs):	X11/Vıvojové prostøedky/Knihovny
+Group(da):	X11/Udvikling/Biblioteker
+Group(de):	X11/Entwicklung/Bibliotheken
 Group(es):	X11/Desarrollo/Bibliotecas
 Group(fr):	X11/Development/Librairies
+Group(is):	X11/Şróunartól/Ağgerğasöfn
+Group(it):	X11/Sviluppo/Librerie
+Group(ja):	X11/³«È¯/¥é¥¤¥Ö¥é¥ê
+Group(no):	X11/Applikasjoner/Biblioteker
 Group(pl):	X11/Programowanie/Biblioteki
 Group(pt_BR):	X11/Desenvolvimento/Bibliotecas
+Group(pt):	X11/Desenvolvimento/Bibliotecas
 Group(ru):	X11/òÁÚÒÁÂÏÔËÁ/âÉÂÌÉÏÔÅËÉ
+Group(sl):	X11/Razvoj/Knji¾nice
+Group(sv):	X11/Utveckling/Bibliotek
 Group(uk):	X11/òÏÚÒÏÂËÁ/â¦ÂÌ¦ÏÔÅËÉ
 Requires:	%{name} = %{version}
 # Every program using imlib2 should get a list of libraries to link with by
@@ -84,12 +102,21 @@ Pliki nag³ówkowe oraz dokumentacja do biblioteki Imlib.
 Summary:	Imlib static libraries
 Summary(pl):	Biblioteki statyczne imlib
 Group:		X11/Development/Libraries
-Group(de):	X11/Entwicklung/Libraries
+Group(cs):	X11/Vıvojové prostøedky/Knihovny
+Group(da):	X11/Udvikling/Biblioteker
+Group(de):	X11/Entwicklung/Bibliotheken
 Group(es):	X11/Desarrollo/Bibliotecas
 Group(fr):	X11/Development/Librairies
+Group(is):	X11/Şróunartól/Ağgerğasöfn
+Group(it):	X11/Sviluppo/Librerie
+Group(ja):	X11/³«È¯/¥é¥¤¥Ö¥é¥ê
+Group(no):	X11/Applikasjoner/Biblioteker
 Group(pl):	X11/Programowanie/Biblioteki
 Group(pt_BR):	X11/Desenvolvimento/Bibliotecas
+Group(pt):	X11/Desenvolvimento/Bibliotecas
 Group(ru):	X11/òÁÚÒÁÂÏÔËÁ/âÉÂÌÉÏÔÅËÉ
+Group(sl):	X11/Razvoj/Knji¾nice
+Group(sv):	X11/Utveckling/Bibliotek
 Group(uk):	X11/òÏÚÒÏÂËÁ/â¦ÂÌ¦ÏÔÅËÉ
 Requires:	%{name}-devel = %{version}
 
@@ -106,7 +133,7 @@ Biblioteki statyczne imlib.
 %{!?_with_static_ltdl:%patch2 -p1}
 
 %build
-rm missing
+rm -f missing
 libtoolize --copy --force --ltdl
 # ltdl option copies libltdl sources
 aclocal
