@@ -21,8 +21,6 @@ BuildRequires:	libungif-devel
 Obsoletes:	libimlib2_1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		_sysconfdir	/etc/X11
-
 %description
 Imlib2 is an advanced replacement library for libraries like libXpm
 that provides many more features with much greater flexibility and
@@ -71,6 +69,8 @@ Biblioteki statyczne imlib2.
 
 %prep
 %setup -q
+
+sed -i -e 's@/lib -lX11@/%{_lib} -lX11@' configure.in
 
 %build
 %{__libtoolize}
