@@ -1,18 +1,5 @@
-diff -Nru imlib2-1.0.3.orig/Makefile.am imlib2-1.0.3/Makefile.am
---- imlib2-1.0.3.orig/Makefile.am	Fri Mar  2 19:58:53 2001
-+++ imlib2-1.0.3/Makefile.am	Thu Aug 23 13:52:37 2001
-@@ -9,7 +9,7 @@
- 		       ltconfig ltmain.sh missing mkinstalldirs \
- 		       stamp-h.in
- 
--SUBDIRS		     = libltdl src filters doc loaders
-+SUBDIRS		     = src filters doc loaders
- 
- bin_SCRIPTS = imlib2-config
- 
-diff -Nru imlib2-1.0.3.orig/configure.in imlib2-1.0.3/configure.in
---- imlib2-1.0.3.orig/configure.in	Sun Apr 29 07:43:54 2001
-+++ imlib2-1.0.3/configure.in	Thu Aug 23 13:48:16 2001
+--- imlib2-1.0.4/configure.in.orig	Mon Nov 12 22:41:31 2001
++++ imlib2-1.0.4/configure.in	Mon Nov 12 22:42:16 2001
 @@ -44,7 +44,6 @@
  AC_C_BIGENDIAN	      
  
@@ -21,31 +8,12 @@ diff -Nru imlib2-1.0.3.orig/configure.in imlib2-1.0.3/configure.in
  
  AC_PROG_CC
  AM_PROG_CC_STDC
-@@ -155,8 +154,7 @@
- AC_MSG_ERROR([Fatal Error: no FreeType header files detected.])
+@@ -158,7 +157,7 @@
  fi
  fi
--AC_CHECK_LIB(dl, dlopen, dlopen_libs=-ldl, [
--], -ldl)
+ fi
+-AC_CHECK_LIB(dl, dlopen, dlopen_libs=-ldl)
 +AC_CHECK_LIB(dl, dlopen, dlopen_libs=-ldl, [], -ldl)
  
  EXTRA_LIBS="-L/usr/local/lib -L/usr/X11R6/lib"
  
-diff -Nru imlib2-1.0.3.orig/src/Makefile.am imlib2-1.0.3/src/Makefile.am
---- imlib2-1.0.3.orig/src/Makefile.am	Sun Apr 29 07:44:06 2001
-+++ imlib2-1.0.3/src/Makefile.am	Thu Aug 23 14:24:40 2001
-@@ -30,12 +30,12 @@
- 
- if HAVE_MMX
- libImlib2_la_LIBADD   = $(X_OBJS) @DLLDFLAGS@ $(MMX_OBJS) \
--                       $(top_builddir)/libltdl/libltdlc.la \
-+                       -lltdl \
-                        $(x_libs) -lttf $(LDFLAGS)
- libImlib2_la_DEPENDENCIES = $(top_builddir)/config.h $(X_OBJS) $(MMX_OBJS)
- else
- libImlib2_la_LIBADD   = $(X_OBJS) @DLLDFLAGS@ \
--                       $(top_builddir)/libltdl/libltdlc.la \
-+                       -lltdl \
-                        $(x_libs) -lttf $(LDFLAGS)
- libImlib2_la_DEPENDENCIES = $(top_builddir)/config.h $(X_OBJS)
- endif
