@@ -7,7 +7,11 @@ License:	LGPL
 Group:		X11/Libraries
 Group(de):	X11/Libraries
 Group(es):	X11/Bibliotecas
+Group(fr):	X11/Librairies
 Group(pl):	X11/Biblioteki
+Group(pt_BR):	X11/Bibliotecas
+Group(ru):	X11/Библиотеки
+Group(uk):	X11/Б╕бл╕отеки
 Source0:	http://prdownloads.sourceforge.net/enlightenment/%{name}-%{version}.tar.gz
 Patch0:		%{name}-path.patch
 Patch1:		%{name}-ltdl.patch
@@ -50,7 +54,12 @@ Summary(fr):	Fichiers entЙte pour Imlib
 Summary(pl):	Pliki nagЁСwkowe oraz dokumentacja do imlib
 Group:		X11/Development/Libraries
 Group(de):	X11/Entwicklung/Libraries
+Group(es):	X11/Desarrollo/Bibliotecas
+Group(fr):	X11/Development/Librairies
 Group(pl):	X11/Programowanie/Biblioteki
+Group(pt_BR):	X11/Desenvolvimento/Bibliotecas
+Group(ru):	X11/Разработка/Библиотеки
+Group(uk):	X11/Розробка/Б╕бл╕отеки
 Requires:	%{name} = %{version}
 # Every program using imlib2 should get a list of libraries to link with by
 # executing `imlib2-config --libs`. All libraries listed below are returned by
@@ -72,7 +81,12 @@ Summary:	Imlib static libraries
 Summary(pl):	Biblioteki statyczne imlib
 Group:		X11/Development/Libraries
 Group(de):	X11/Entwicklung/Libraries
+Group(es):	X11/Desarrollo/Bibliotecas
+Group(fr):	X11/Development/Librairies
 Group(pl):	X11/Programowanie/Biblioteki
+Group(pt_BR):	X11/Desenvolvimento/Bibliotecas
+Group(ru):	X11/Разработка/Библиотеки
+Group(uk):	X11/Розробка/Б╕бл╕отеки
 Requires:	%{name}-devel = %{version}
 
 %description static
