@@ -15,18 +15,17 @@ Group(uk):	X11/Б╕бл╕отеки
 Source0:	http://prdownloads.sourceforge.net/enlightenment/%{name}-%{version}.tar.gz
 Patch0:		%{name}-path.patch
 Patch1:		%{name}-ltdl.patch
-BuildRequires:	libtool
+BuildRequires:	XFree86-devel
+BuildRequires:	edb-devel
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	libtiff-devel
-BuildRequires:	libungif-devel
-BuildRequires:	libpng-devel >= 1.0.8
-BuildRequires:	libjpeg-devel >= 6b-18
-BuildRequires:	edb-devel
-BuildRequires:	zlib-devel
 BuildRequires:	freetype1-devel
-BuildRequires:	XFree86-devel
+BuildRequires:	libjpeg-devel >= 6b-18
 BuildRequires:	libltdl-devel
+BuildRequires:	libpng-devel >= 1.0.8
+BuildRequires:	libtiff-devel
+BuildRequires:	libtool
+BuildRequires:	libungif-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_prefix		/usr/X11R6
