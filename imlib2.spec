@@ -3,8 +3,8 @@
 
 Summary:	Powerful image loading and rendering library
 Name:		imlib2
-Version:	1.0.4
-Release:	5
+Version:	1.0.5
+Release:	1
 License:	LGPL
 Group:		X11/Libraries
 Group(de):	X11/Libraries
