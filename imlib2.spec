@@ -1,8 +1,10 @@
+#
+# _with_dynamic_ltdl - build using dynamic ltdl library
+
 Summary:	Powerful image loading and rendering library
-Summary(pl):	Biblioteka do ³adowania i renderowania obrazków
 Name:		imlib2
 Version:	1.0.4
-Release:	4
+Release:	5
 License:	LGPL
 Group:		X11/Libraries
 Group(de):	X11/Libraries
@@ -22,7 +24,7 @@ BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	freetype1-devel
 BuildRequires:	libjpeg-devel >= 6b-18
-BuildRequires:	libltdl-devel
+%{?_with_dynamic_ltdl:BuildRequires:	libltdl-devel}
 BuildRequires:	libpng-devel >= 1.0.8
 BuildRequires:	libtiff-devel
 BuildRequires:	libtool
@@ -101,11 +103,12 @@ Biblioteki statyczne imlib.
 %setup -q
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
+%{?_with_dynamic_ltdl:%patch1 -p2}
 
 %build
 rm missing
-libtoolize --copy --force
+libtoolize --copy --force --ltdl
+# ltdl option copies libltdl sources
 aclocal
 autoconf
 automake -a -c
