@@ -1,24 +1,36 @@
+diff -urN imlib2-1.0.3.org/configure.in imlib2-1.0.3/configure.in
+--- imlib2-1.0.3.org/configure.in	Tue May  1 16:24:25 2001
++++ imlib2-1.0.3/configure.in	Tue May  1 16:26:54 2001
+@@ -38,7 +38,7 @@
+ fi
+ AM_CONDITIONAL(HAVE_MMX, test x$mmx = xyes)
+ 
+-pkglibdir='${libdir}'/loaders
++pkglibdir='${libdir}'/imlib2/loaders
+ AC_SUBST(pkglibdir)
+ 
+ AC_C_BIGENDIAN	      
 diff -urN imlib2-1.0.3.org/filters/Makefile.am imlib2-1.0.3/filters/Makefile.am
---- imlib2-1.0.3.org/filters/Makefile.am	Tue May  1 10:11:11 2001
-+++ imlib2-1.0.3/filters/Makefile.am	Tue May  1 10:11:24 2001
+--- imlib2-1.0.3.org/filters/Makefile.am	Tue May  1 16:24:25 2001
++++ imlib2-1.0.3/filters/Makefile.am	Tue May  1 16:59:17 2001
 @@ -11,7 +11,7 @@
  		       -I. -I$(top_srcdir) -I$(top_srcdir)/src \
  		       -I$(top_srcdir)/loaders
  
 -pkgdir		     = $(libdir)/loaders/filter
-+pkgdir		     = $(libdir)/imlib2/loaders/filter
++pkgdir		     = @pkglibdir@/filter
  pkg_LTLIBRARIES	     = testfilter.la bump_map.la colormod.la
  
  testfilter_la_SOURCES    = filter_test.c
 diff -urN imlib2-1.0.3.org/loaders/Makefile.am imlib2-1.0.3/loaders/Makefile.am
---- imlib2-1.0.3.org/loaders/Makefile.am	Tue May  1 10:11:11 2001
-+++ imlib2-1.0.3/loaders/Makefile.am	Tue May  1 10:11:36 2001
+--- imlib2-1.0.3.org/loaders/Makefile.am	Tue May  1 16:24:25 2001
++++ imlib2-1.0.3/loaders/Makefile.am	Tue May  1 16:59:25 2001
 @@ -11,7 +11,7 @@
  		       -I. -I$(top_srcdir) -I$(top_srcdir)/src \
  		       -I$(top_srcdir)/loaders
  
 -pkgdir		     = $(libdir)/loaders/image
-+pkgdir		     = $(libdir)/imlib2/loaders/image
++pkgdir		     = @pkglibdir@/image
  
  if JPEG_LOADER
  JPEG_L              = jpeg.la
