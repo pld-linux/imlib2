@@ -11,6 +11,7 @@ Patch0:		%{name}-path.patch
 BuildRequires:	XFree86-devel
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
+BuildRequires:	bzip2-devel
 BuildRequires:	freetype-devel >= 2.0
 BuildRequires:	libjpeg-devel >= 6b-18
 BuildRequires:	libltdl-devel
