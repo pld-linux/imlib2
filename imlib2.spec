@@ -125,14 +125,14 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_libdir}/%{name}/loaders/filter
 %dir %{_libdir}/%{name}/loaders/image
 %attr(755,root,root) %{_libdir}/%{name}/loaders/*/*.so
-%attr(755,root,root) %{_libdir}/%{name}/loaders/*/*.la
+%{_libdir}/%{name}/loaders/*/*.la
 
 %files devel
 %defattr(644,root,root,755)
 %doc doc/{*gif,*.html}
 %attr(755,root,root) %{_bindir}/%{name}-config
 %attr(755,root,root) %{_libdir}/lib*.so
-%attr(755,root,root) %{_libdir}/lib*.la
+%{_libdir}/lib*.la
 %{_includedir}/*
 
 %files static
