@@ -1,18 +1,17 @@
 Summary:	Powerful image loading and rendering library
 Summary(pl):	Potê¿na biblioteka wczytuj±ca i renderuj±ca obrazki
 Name:		imlib2
-Version:	1.1.2
-Release:	2
+Version:	1.2.0
+Release:	1
 License:	LGPL
 Group:		X11/Libraries
 Source0:	http://dl.sourceforge.net/enlightenment/%{name}-%{version}.tar.gz
-# Source0-md5:	3389bad516032c951fda4fe620df0cef
-Patch0:		%{name}-path.patch
+# Source0-md5:	853fb77100ee3c3ca944f52c892ab49b
 BuildRequires:	XFree86-devel
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
 BuildRequires:	bzip2-devel
-BuildRequires:	freetype-devel >= 2.0
+BuildRequires:	freetype-devel >= 2.1
 BuildRequires:	libjpeg-devel >= 6b-18
 BuildRequires:	libltdl-devel
 BuildRequires:	libpng-devel >= 1.0.8
@@ -72,7 +71,6 @@ Biblioteki statyczne imlib2.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 %{__libtoolize}
@@ -97,9 +95,7 @@ rm -rf $RPM_BUILD_ROOT
 
 # no static plugins - shut up check-files
 # plugins are lt_dlopened w/o extension, so *.la should be left
-rm -f $RPM_BUILD_ROOT%{_libdir}/imlib2_loaders/*/*.a
-# test programs
-rm -f $RPM_BUILD_ROOT%{_bindir}/{bumpmaptest,color_spaces,imlib2,imlib2_test,polytest}
+rm -f $RPM_BUILD_ROOT%{_libdir}/imlib2/*/*.a
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -110,22 +106,22 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog README
-%attr(755,root,root) %{_bindir}/imconvert
-%attr(755,root,root) %{_bindir}/imlib2_view
-%attr(755,root,root) %{_libdir}/lib*.so.*.*
-%dir %{_libdir}/imlib2_loaders
-%dir %{_libdir}/imlib2_loaders/filter
-%dir %{_libdir}/imlib2_loaders/image
-%attr(755,root,root) %{_libdir}/imlib2_loaders/*/*.so
-%{_libdir}/imlib2_loaders/*/*.la
+%attr(755,root,root) %{_bindir}/imlib2_*
+%attr(755,root,root) %{_libdir}/lib*.so.*.*.*
+%dir %{_libdir}/imlib2
+%dir %{_libdir}/imlib2/filters
+%dir %{_libdir}/imlib2/loaders
+%attr(755,root,root) %{_libdir}/imlib2/*/*.so
+%{_libdir}/imlib2/*/*.la
+%{_datadir}/imlib2
 
 %files devel
 %defattr(644,root,root,755)
-%doc doc/{*gif,*.html}
+%doc doc/{*.gif,*.html}
 %attr(755,root,root) %{_bindir}/imlib2-config
 %attr(755,root,root) %{_libdir}/lib*.so
 %{_libdir}/lib*.la
-%{_includedir}/*
+%{_includedir}/Imlib2.h
 %{_pkgconfigdir}/imlib2.pc
 
 %files static
