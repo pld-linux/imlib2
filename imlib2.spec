@@ -89,8 +89,8 @@ rm -f missing
 libtoolize --copy --force --ltdl
 # ltdl option copies libltdl sources
 aclocal
-autoconf
-automake -a -c -f
+%{__autoconf}
+%{__automake}
 %configure \
 %ifarch i586 i686 athlon
 	--enable-mmx
