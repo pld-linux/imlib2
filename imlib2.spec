@@ -73,7 +73,7 @@ Requires:	%{name}-devel = %{version}
 %description static
 Imlib static libraries.
 
-%description devel -l pl
+%description static -l pl
 Biblioteki statyczne imlib.
 
 %prep
