@@ -11,6 +11,7 @@ Source0:	ftp://ftp.sourceforge.net/pub/sourceforge/enlightenment/%{name}-%{versi
 Patch0:		%{name}-path.patch
 Patch1:		%{name}-as.patch
 Patch2:		%{name}-ltdl.patch
+Patch3:		%{name}-AC_LIBOBJ.patch
 BuildRequires:	XFree86-devel
 BuildRequires:	edb-devel
 BuildRequires:	autoconf
@@ -83,6 +84,7 @@ Biblioteki statyczne imlib.
 %patch0 -p1
 %patch1 -p1
 %{!?_with_static_ltdl:%patch2 -p1}
+%patch3 -p1
 
 %build
 rm -f missing
@@ -105,6 +107,9 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
+
+# shutup check-files
+rm -f  $RPM_BUILD_ROOT/%{_libdir}/%{name}/loaders/*/*.a
 
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
