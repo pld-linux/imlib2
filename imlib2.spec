@@ -54,6 +54,7 @@ Requires:	%{name} = %{version}
 # this call, so they are required by every program compiled with imlib.
 Requires:	XFree86-devel
 Requires:	freetype1-devel
+%{!?_with_static_ltdl:Requires:	libltdl-devel}
 Obsoletes:	libimlib2_1-devel
 
 %description devel
@@ -86,8 +87,8 @@ Biblioteki statyczne imlib.
 
 %build
 rm -f missing
-%{__libtoolize} %{?_with_static_ltdl:--ltdl}
 # ltdl option copies libltdl sources
+%{__libtoolize} %{?_with_static_ltdl:--ltdl}
 %{__aclocal}
 %{__autoconf}
 %{__automake}
