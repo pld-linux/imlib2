@@ -4,7 +4,7 @@
 Summary:	Powerful image loading and rendering library
 Name:		imlib2
 Version:	1.0.5
-Release:	1
+Release:	2
 License:	LGPL
 Group:		X11/Libraries
 Group(de):	X11/Libraries
@@ -113,7 +113,7 @@ aclocal
 autoconf
 automake -a -c
 %configure \
-%ifarch i586 i686
+%ifarch i586 i686 athlon
 	--enable-mmx
 %else
 	--disable-mmx
