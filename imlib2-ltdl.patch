@@ -3,8 +3,9 @@
 @@ -44,7 +44,6 @@
  AC_C_BIGENDIAN	      
  
- AC_LIBLTDL_CONVENIENCE
+-AC_LIBLTDL_CONVENIENCE
 -AC_CONFIG_SUBDIRS(libltdl)
++AC_LIBLTDL_INSTALLABLE
  
  AC_PROG_CC
  AM_PROG_CC_STDC
@@ -30,21 +31,27 @@
  
 --- imlib2-1.0.4/src/Makefile.am	Thu Aug  2 07:09:35 2001
 +++ imlib2-1.0.4.new/src/Makefile.am	Thu Dec  6 22:12:21 2001
-@@ -31,16 +31,15 @@
+@@ -6,7 +6,7 @@
+ MAINTAINERCLEANFILES = Makefile.in loaderpath.h
+ 
+ LDFLAGS		     = -L/usr/X11R6/lib
+-INCLUDES	     = -I/usr/X11R6/include -I$(top_srcdir)/libltdl \
++INCLUDES	     = -I/usr/X11R6/include \
+                        $(X_CFLAGS) -I$(prefix)/include -I$(includedir) \
+ 		       -I. -I$(top_srcdir) -I$(top_srcdir)/src \
+ 		       -I$(top_srcdir)/loaders
+@@ -31,12 +31,12 @@
  
  if HAVE_MMX
  libImlib2_la_LIBADD   = $(X_OBJS) @DLLDFLAGS@ $(MMX_OBJS) \
 -                       $(top_builddir)/libltdl/libltdlc.la \
++			-lltdl \
                         $(x_libs) -lttf $(LDFLAGS)
  libImlib2_la_DEPENDENCIES = $(top_builddir)/config.h $(X_OBJS) $(MMX_OBJS)
  else
  libImlib2_la_LIBADD   = $(X_OBJS) @DLLDFLAGS@ \
 -                       $(top_builddir)/libltdl/libltdlc.la \
++			-lltdl \
                         $(x_libs) -lttf $(LDFLAGS)
  libImlib2_la_DEPENDENCIES = $(top_builddir)/config.h $(X_OBJS)
  endif
- 
-+
- SYS_LOADERS_PATH = @pkglibdir@
- image.lo: loaderpath.h
- loaderpath.h: Makefile
