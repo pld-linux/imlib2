@@ -9,6 +9,7 @@ Release:	3
 License:	LGPL
 Group:		X11/Libraries
 Source0:	http://dl.sourceforge.net/enlightenment/%{name}-%{version}.tar.gz
+# Source0-md5: e3475376bf27347c47c7a9ffb49bdb96
 Patch0:		%{name}-path.patch
 Patch1:		%{name}-as.patch
 Patch2:		%{name}-ltdl.patch
