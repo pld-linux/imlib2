@@ -90,7 +90,7 @@ libtoolize --copy --force --ltdl
 # ltdl option copies libltdl sources
 aclocal
 autoconf
-automake -a -c
+automake -a -c -f
 %configure \
 %ifarch i586 i686 athlon
 	--enable-mmx
