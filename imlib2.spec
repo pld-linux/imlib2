@@ -33,10 +33,9 @@ and more.
 %description -l pl
 Imlib2 jest zaawansowan± bibliotek±, zamiennikiem takich bibliotek jak
 libXpm. Imlib2 dostarcza o wiele wiêcej mo¿liwo¶ci przy du¿o wiêkszej
-szybko¶ci ni¿ standardowe bilioteki (w³±czaj±c w to rasteryzacjê
-fontów, obracanie, renderowanie przestrzeni RGBA, mieszanie,
-dynamiczne filtry (w postaci binarnej), obs³uga jêzyka skryptowego i
-wiele wiêcej.
+szybko¶ci ni¿ standardowe biblioteki (w³±czaj±c w to rasteryzacjê
+fontów, obracanie, renderowanie przestrzeni RGBA, mieszanie, dynamiczne 
+filtry (w postaci binarnej), obs³uga jêzyka skryptowego i wiele wiêcej.
 
 %package devel
 Summary:	Imlib2 header files and development documentation
