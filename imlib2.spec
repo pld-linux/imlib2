@@ -90,7 +90,7 @@ Biblioteki statyczne imlib.
 rm -f missing
 %{__libtoolize} --ltdl
 # ltdl option copies libltdl sources
-aclocal
+%{__aclocal}
 %{__autoconf}
 %{__automake}
 %configure \
