@@ -1,0 +1,13 @@
+diff -urN imlib2-1.0.4/configure.in imlib2-1.0.4.new/configure.in
+--- imlib2-1.0.4/configure.in	Mon Dec  3 01:10:36 2001
++++ imlib2-1.0.4.new/configure.in	Mon Dec  3 01:09:52 2001
+@@ -6,6 +6,9 @@
+ 
+ AM_CONFIG_HEADER(config.h)
+ 
++AM_PROG_AS
++AC_SUBST(ASFLAGS)
++
+ AC_ARG_WITH(ttf,
+         [  --with-ttf=DIR     use freetype rooted at <DIR>],
+         [CPPFLAGS="$CPPFLAGS -I$withval/include"
