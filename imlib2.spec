@@ -1,8 +1,8 @@
 Summary:	Powerful image loading and rendering library
 Summary(pl):	Biblioteka do ³adowania i renderowania obrazków
 Name:		imlib2
-Version:	1.0.3
-Release:	2
+Version:	1.0.4
+Release:	1
 License:	LGPL
 Group:		X11/Libraries
 Group(de):	X11/Libraries
