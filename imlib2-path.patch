@@ -1,0 +1,24 @@
+diff -urN imlib2-1.0.3.org/filters/Makefile.am imlib2-1.0.3/filters/Makefile.am
+--- imlib2-1.0.3.org/filters/Makefile.am	Tue May  1 10:11:11 2001
++++ imlib2-1.0.3/filters/Makefile.am	Tue May  1 10:11:24 2001
+@@ -11,7 +11,7 @@
+ 		       -I. -I$(top_srcdir) -I$(top_srcdir)/src \
+ 		       -I$(top_srcdir)/loaders
+ 
+-pkgdir		     = $(libdir)/loaders/filter
++pkgdir		     = $(libdir)/imlib2/loaders/filter
+ pkg_LTLIBRARIES	     = testfilter.la bump_map.la colormod.la
+ 
+ testfilter_la_SOURCES    = filter_test.c
+diff -urN imlib2-1.0.3.org/loaders/Makefile.am imlib2-1.0.3/loaders/Makefile.am
+--- imlib2-1.0.3.org/loaders/Makefile.am	Tue May  1 10:11:11 2001
++++ imlib2-1.0.3/loaders/Makefile.am	Tue May  1 10:11:36 2001
+@@ -11,7 +11,7 @@
+ 		       -I. -I$(top_srcdir) -I$(top_srcdir)/src \
+ 		       -I$(top_srcdir)/loaders
+ 
+-pkgdir		     = $(libdir)/loaders/image
++pkgdir		     = $(libdir)/imlib2/loaders/image
+ 
+ if JPEG_LOADER
+ JPEG_L              = jpeg.la
