@@ -2,7 +2,7 @@ Summary:	Powerful image loading and rendering library
 Summary(pl):	Biblioteka do ³adowania i renderowania obrazków
 Name:		imlib2
 Version:	1.0.3
-Release:	1
+Release:	2
 License:	LGPL
 Group:		X11/Libraries
 Group(de):	X11/Libraries
@@ -10,6 +10,7 @@ Group(es):	X11/Bibliotecas
 Group(pl):	X11/Biblioteki
 Source0:	http://prdownloads.sourceforge.net/enlightenment/%{name}-%{version}.tar.gz
 Patch0:		%{name}-path.patch
+Patch1:		%{name}-ltdl.patch
 BuildRequires:	libtool
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -25,7 +26,7 @@ BuildRequires:	libltdl-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_prefix		/usr/X11R6
-%define		_mandir		%{prefix}/man
+%define		_mandir		%{_prefix}/man
 %define		_sysconfdir	/etc/X11
 
 %description
@@ -83,6 +84,7 @@ Biblioteki statyczne imlib.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 rm missing
