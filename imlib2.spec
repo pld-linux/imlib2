@@ -1,3 +1,5 @@
+# TODO:
+# - SECURITY: http://securitytracker.com/alerts/2004/Aug/1011105.html
 #
 # _with_static_ltdl - build using static ltdl library (just asking for trouble)
 #
