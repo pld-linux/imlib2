@@ -1,6 +1,3 @@
-#
-# _with_static_ltdl - build using static ltdl library (just asking for trouble)
-#
 Summary:	Powerful image loading and rendering library
 Summary(pl):	Potê¿na biblioteka wczytuj±ca i renderuj±ca obrazki
 Name:		imlib2
@@ -19,7 +16,7 @@ BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	freetype1-devel
 BuildRequires:	libjpeg-devel >= 6b-18
-%{!?_with_static_ltdl:BuildRequires:	libltdl-devel}
+BuildRequires:	libltdl-devel
 BuildRequires:	libpng-devel >= 1.0.8
 BuildRequires:	libtiff-devel
 BuildRequires:	libtool
@@ -55,7 +52,7 @@ Requires:	%{name} = %{version}
 # this call, so they are required by every program compiled with imlib.
 Requires:	XFree86-devel
 Requires:	freetype1-devel
-%{!?_with_static_ltdl:Requires:	libltdl-devel}
+Requires:	libltdl-devel
 Obsoletes:	libimlib2_1-devel
 
 %description devel
@@ -88,8 +85,7 @@ Biblioteki statyczne imlib.
 
 %build
 rm -f missing
-# ltdl option copies libltdl sources
-%{__libtoolize} %{?_with_static_ltdl:--ltdl}
+%{__libtoolize}
 %{__aclocal}
 %{__autoconf}
 %{__automake}
@@ -108,17 +104,19 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-# shutup check-files
-rm -f  $RPM_BUILD_ROOT/%{_libdir}/%{name}/loaders/*/*.a
-
-%post   -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
+# no static plugins - shut up check-files
+# plugins are lt_dlopened w/o extension, so *.la should be left
+rm -f  $RPM_BUILD_ROOT%{_libdir}/%{name}/loaders/*/*.a
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
+%post   -p /sbin/ldconfig
+%postun -p /sbin/ldconfig
+
 %files
 %defattr(644,root,root,755)
+%doc AUTHORS ChangeLog README
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
 %dir %{_libdir}/%{name}
 %dir %{_libdir}/%{name}/loaders
