@@ -1,36 +1,37 @@
-diff -urN imlib2-1.1.0.org/configure.ac imlib2-1.1.0/configure.ac
---- imlib2-1.1.0.org/configure.ac	Tue May  1 16:24:25 2001
-+++ imlib2-1.1.0/configure.ac	Tue May  1 16:26:54 2001
-@@ -38,7 +38,7 @@
- fi
- AM_CONDITIONAL(HAVE_MMX, test x$mmx = xyes)
+--- imlib2-1.1.1/configure.in.orig	2004-07-21 02:42:34.000000000 +0200
++++ imlib2-1.1.1/configure.in	2004-08-01 10:59:59.003630864 +0200
+@@ -17,34 +17,6 @@
+ AM_ENABLE_SHARED
+ AM_PROG_LIBTOOL
  
--pkglibdir='${libdir}'/loaders
-+pkglibdir='${libdir}'/imlib2/loaders
- AC_SUBST(pkglibdir)
- 
- AC_C_BIGENDIAN	      
-diff -urN imlib2-1.0.3.org/filters/Makefile.am imlib2-1.0.3/filters/Makefile.am
---- imlib2-1.0.3.org/filters/Makefile.am	Tue May  1 16:24:25 2001
-+++ imlib2-1.0.3/filters/Makefile.am	Tue May  1 16:59:17 2001
-@@ -11,7 +11,7 @@
- 		       -I. -I$(top_srcdir) -I$(top_srcdir)/src \
- 		       -I$(top_srcdir)/loaders
- 
--pkgdir		     = $(libdir)/loaders/filter
-+pkgdir		     = @pkglibdir@/filter
- pkg_LTLIBRARIES	     = testfilter.la bump_map.la colormod.la
- 
- testfilter_la_SOURCES    = filter_test.c
-diff -urN imlib2-1.0.3.org/loaders/Makefile.am imlib2-1.0.3/loaders/Makefile.am
---- imlib2-1.0.3.org/loaders/Makefile.am	Tue May  1 16:24:25 2001
-+++ imlib2-1.0.3/loaders/Makefile.am	Tue May  1 16:59:25 2001
-@@ -11,7 +11,7 @@
- 		       -I. -I$(top_srcdir) -I$(top_srcdir)/src \
- 		       -I$(top_srcdir)/loaders
- 
--pkgdir		     = $(libdir)/loaders/image
-+pkgdir		     = @pkglibdir@/image
- 
- if JPEG_LOADER
- JPEG_L              = jpeg.la
+-if test "x${exec_prefix}" = "xNONE"; then
+-  if test "x${prefix}" = "xNONE"; then
+-    bindir="${ac_default_prefix}/bin";
+-  else
+-    bindir="${prefix}/bin";
+-  fi
+-else
+-  if test "x${prefix}" = "xNONE"; then
+-    bindir="${ac_default_prefix}/bin";
+-  else
+-    bindir="${prefix}/bin";
+-  fi
+-fi
+-
+-if test "x${exec_prefix}" = "xNONE"; then
+-  if test "x${prefix}" = "xNONE"; then
+-    libdir="${ac_default_prefix}/lib";
+-  else
+-    libdir="${prefix}/lib";
+-  fi
+-else
+-  if test "x${prefix}" = "xNONE"; then
+-    libdir="${ac_default_prefix}/lib";
+-  else
+-    libdir="${prefix}/lib";
+-  fi
+-fi
+-
+ dnl Set PACKAGE_BIN_DIR in config.h.
+ if test "x${bindir}" = 'xNONE'; then
+   if test "x${prefix}" = "xNONE"; then
