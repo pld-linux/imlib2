@@ -2,7 +2,7 @@ Summary:	Powerful image loading and rendering library
 Summary(pl):	Biblioteka do ³adowania i renderowania obrazków
 Name:		imlib2
 Version:	1.0.4
-Release:	2
+Release:	3
 License:	LGPL
 Group:		X11/Libraries
 Group(de):	X11/Libraries
@@ -102,6 +102,9 @@ Biblioteki statyczne imlib.
 %patch2 -p1
 
 %build
+AS=%{__cc}
+export AS
+
 rm missing
 libtoolize --copy --force
 aclocal
@@ -114,7 +117,7 @@ automake -a -c
 	--disable-mmx
 %endif
 
-%{__make}
+%{__make} ASFLAGS="%{rpmcflags} -I.."
 			    
 %install
 rm -rf $RPM_BUILD_ROOT
