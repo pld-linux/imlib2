@@ -1,5 +1,5 @@
 #
-# _with_dynamic_ltdl - build using dynamic ltdl library
+# _with_static_ltdl - build using static ltdl library
 
 Summary:	Powerful image loading and rendering library
 Name:		imlib2
@@ -24,7 +24,7 @@ BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	freetype1-devel
 BuildRequires:	libjpeg-devel >= 6b-18
-%{?_with_dynamic_ltdl:BuildRequires:	libltdl-devel}
+%{!?_with_static_ltdl:BuildRequires:	libltdl-devel}
 BuildRequires:	libpng-devel >= 1.0.8
 BuildRequires:	libtiff-devel
 BuildRequires:	libtool
@@ -103,7 +103,7 @@ Biblioteki statyczne imlib.
 %setup -q
 %patch0 -p1
 %patch1 -p1
-%{?_with_dynamic_ltdl:%patch1 -p2}
+%{!?_with_static_ltdl:%patch2 -p1}
 
 %build
 rm missing
