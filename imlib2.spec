@@ -2,7 +2,7 @@ Summary:	Powerful image loading and rendering library
 Summary(pl):	Biblioteka do ≥adowania i renderowania obrazkÛw
 Name:		imlib2
 Version:	1.0.4
-Release:	3
+Release:	4
 License:	LGPL
 Group:		X11/Libraries
 Group(de):	X11/Libraries
@@ -14,8 +14,8 @@ Group(ru):	X11/‚…¬Ã…œ‘≈À…
 Group(uk):	X11/‚¶¬Ã¶œ‘≈À…
 Source0:	http://prdownloads.sourceforge.net/enlightenment/%{name}-%{version}.tar.gz
 Patch0:		%{name}-path.patch
-Patch1:		%{name}-ltdl.patch
-Patch2:		%{name}-as.patch
+Patch1:		%{name}-as.patch
+Patch2:		%{name}-ltdl.patch
 BuildRequires:	XFree86-devel
 BuildRequires:	edb-devel
 BuildRequires:	autoconf
@@ -102,9 +102,6 @@ Biblioteki statyczne imlib.
 %patch2 -p1
 
 %build
-AS=%{__cc}
-export AS
-
 rm missing
 libtoolize --copy --force
 aclocal
@@ -117,7 +114,7 @@ automake -a -c
 	--disable-mmx
 %endif
 
-%{__make} ASFLAGS="%{rpmcflags} -I.."
+%{__make}
 			    
 %install
 rm -rf $RPM_BUILD_ROOT
