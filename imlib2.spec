@@ -8,7 +8,7 @@ Version:	1.0.6
 Release:	3
 License:	LGPL
 Group:		X11/Libraries
-Source0:	ftp://ftp.sourceforge.net/pub/sourceforge/enlightenment/%{name}-%{version}.tar.gz
+Source0:	http://prdownloads.sourceforge.net/enlightenment/%{name}-%{version}.tar.gz
 Patch0:		%{name}-path.patch
 Patch1:		%{name}-as.patch
 Patch2:		%{name}-ltdl.patch
