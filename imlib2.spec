@@ -97,6 +97,7 @@ rm -rf libltdl configure.in
 %install
 rm -rf $RPM_BUILD_ROOT
 
+cp mkinstalldirs libltdl
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
