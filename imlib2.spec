@@ -10,6 +10,7 @@ Source0:	http://dl.sourceforge.net/enlightenment/%{name}-%{version}.tar.gz
 Patch0:		%{name}-path.patch
 Patch1:		%{name}-ltdl.patch
 Patch2:		%{name}-link.patch
+Patch3:		%{name}-gcc34.patch
 BuildRequires:	XFree86-devel
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
@@ -77,6 +78,7 @@ Biblioteki statyczne imlib2.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %build
 rm -rf libltdl configure.in
