@@ -1,16 +1,13 @@
 Summary:	Powerful image loading and rendering library
 Summary(pl):	Potê¿na biblioteka wczytuj±ca i renderuj±ca obrazki
 Name:		imlib2
-Version:	1.1.0
-Release:	2
+Version:	1.1.1
+Release:	1
 License:	LGPL
 Group:		X11/Libraries
 Source0:	http://dl.sourceforge.net/enlightenment/%{name}-%{version}.tar.gz
-# Source0-md5:	1589ebb054da76734fe08ae570460034
+# Source0-md5:	06b629285c163cd61a59db89377a0520
 Patch0:		%{name}-path.patch
-Patch1:		%{name}-ltdl.patch
-Patch2:		%{name}-link.patch
-Patch3:		%{name}-gcc34.patch
 BuildRequires:	XFree86-devel
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
@@ -21,8 +18,8 @@ BuildRequires:	libpng-devel >= 1.0.8
 BuildRequires:	libtiff-devel
 BuildRequires:	libtool
 BuildRequires:	libungif-devel
-BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Obsoletes:	libimlib2_1
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_sysconfdir	/etc/X11
 
@@ -76,13 +73,9 @@ Biblioteki statyczne imlib2.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
 
 %build
-rm -rf libltdl configure.in
-%{__libtoolize} --ltdl
+%{__libtoolize}
 %{__aclocal}
 %{__autoconf}
 %{__autoheader}
@@ -99,13 +92,14 @@ rm -rf libltdl configure.in
 %install
 rm -rf $RPM_BUILD_ROOT
 
-cp mkinstalldirs libltdl
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
 # no static plugins - shut up check-files
 # plugins are lt_dlopened w/o extension, so *.la should be left
-rm -f $RPM_BUILD_ROOT%{_libdir}/%{name}/loaders/*/*.a
+rm -f $RPM_BUILD_ROOT%{_libdir}/imlib2_loaders/*/*.a
+# test programs
+rm -f $RPM_BUILD_ROOT%{_bindir}/{bumpmaptest,color_spaces,imlib2,imlib2_test,polytest}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -116,13 +110,14 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog README
+%attr(755,root,root) %{_bindir}/imconvert
+%attr(755,root,root) %{_bindir}/imlib2_view
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
-%dir %{_libdir}/%{name}
-%dir %{_libdir}/%{name}/loaders
-%dir %{_libdir}/%{name}/loaders/filter
-%dir %{_libdir}/%{name}/loaders/image
-%attr(755,root,root) %{_libdir}/%{name}/loaders/*/*.so
-%{_libdir}/%{name}/loaders/*/*.la
+%dir %{_libdir}/imlib2_loaders
+%dir %{_libdir}/imlib2_loaders/filter
+%dir %{_libdir}/imlib2_loaders/image
+%attr(755,root,root) %{_libdir}/imlib2_loaders/*/*.so
+%{_libdir}/imlib2_loaders/*/*.la
 
 %files devel
 %defattr(644,root,root,755)
