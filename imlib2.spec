@@ -5,7 +5,7 @@ Summary:	Powerful image loading and rendering library
 Summary(pl):	Potê¿na biblioteka wczytuj±ca i renderuj±ca obrazki
 Name:		imlib2
 Version:	1.0.6
-Release:	3
+Release:	4
 License:	LGPL
 Group:		X11/Libraries
 Source0:	http://dl.sourceforge.net/enlightenment/%{name}-%{version}.tar.gz
@@ -26,6 +26,8 @@ BuildRequires:	libungif-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Obsoletes:	libimlib2_1
 
+%define		_prefix		/usr/X11R6
+%define		_mandir		%{_prefix}/man
 %define		_sysconfdir	/etc/X11
 
 %description
