@@ -46,7 +46,7 @@ Summary:	Imlib2 header files and development documentation
 Summary(fr):	Fichiers entête pour Imlib2
 Summary(pl):	Pliki nag³ówkowe oraz dokumentacja do imlib2
 Group:		X11/Development/Libraries
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{version}-%{release}
 Requires:	XFree86-devel
 Requires:	freetype-devel
 Requires:	libltdl-devel
@@ -65,7 +65,7 @@ Pliki nag³ówkowe oraz dokumentacja do biblioteki Imlib2.
 Summary:	Imlib2 static libraries
 Summary(pl):	Biblioteki statyczne imlib2
 Group:		X11/Development/Libraries
-Requires:	%{name}-devel = %{version}
+Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 Imlib2 static libraries.
