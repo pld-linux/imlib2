@@ -28,6 +28,7 @@ BuildRequires:	libtiff-devel
 BuildRequires:	libtool
 BuildRequires:	libungif-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+Obsoletes:	libimlib2_1
 
 %define		_prefix		/usr/X11R6
 %define		_mandir		%{_prefix}/man
@@ -66,6 +67,7 @@ Requires:	%{name} = %{version}
 # this call, so they are required by every program compiled with imlib.
 Requires:	freetype1-devel
 Requires:	XFree86-devel
+Obsoletes:	libimlib2_1-devel
 
 %description devel
 Header files and development documentation for Imlib.
