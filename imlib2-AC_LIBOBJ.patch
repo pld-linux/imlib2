@@ -1,0 +1,12 @@
+--- imlib2-1.0.6/configure.in.wiget	Sat Aug 10 14:37:40 2002
++++ imlib2-1.0.6/configure.in	Sat Aug 10 14:39:58 2002
+@@ -116,9 +116,6 @@
+ fi
+ 
+ AC_SUBST(X_OBJS)
+-																	
+-LTLIBOBJS=`echo "$LIBOBJS" | sed 's,.o ,.lo ,g;s,.o$,.lo,'`
+-AC_SUBST(LTLIBOBJS)
+ 
+ AC_CHECK_LIB(ttf, TT_Init_FreeType, TTF_LIBS=-lttf, [
+ echo ""
