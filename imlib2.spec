@@ -1,7 +1,8 @@
 #
-# _with_static_ltdl - build using static ltdl library
-
+# _with_static_ltdl - build using static ltdl library (just asking for trouble)
+#
 Summary:	Powerful image loading and rendering library
+Summary(pl):	Potê¿na biblioteka wczytuj±ca i renderuj±ca obrazki
 Name:		imlib2
 Version:	1.0.6
 Release:	2
@@ -13,7 +14,6 @@ Patch1:		%{name}-as.patch
 Patch2:		%{name}-ltdl.patch
 Patch3:		%{name}-AC_LIBOBJ.patch
 BuildRequires:	XFree86-devel
-BuildRequires:	edb-devel
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	freetype1-devel
@@ -54,8 +54,8 @@ Requires:	%{name} = %{version}
 # Every program using imlib2 should get a list of libraries to link with by
 # executing `imlib2-config --libs`. All libraries listed below are returned by
 # this call, so they are required by every program compiled with imlib.
-Requires:	freetype1-devel
 Requires:	XFree86-devel
+Requires:	freetype1-devel
 Obsoletes:	libimlib2_1-devel
 
 %description devel
@@ -88,7 +88,7 @@ Biblioteki statyczne imlib.
 
 %build
 rm -f missing
-%{__libtoolize} --ltdl
+%{__libtoolize} %{?_with_static_ltdl:--ltdl}
 # ltdl option copies libltdl sources
 %{__aclocal}
 %{__autoconf}
