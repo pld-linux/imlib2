@@ -86,7 +86,7 @@ Biblioteki statyczne imlib.
 
 %build
 rm -f missing
-libtoolize --copy --force --ltdl
+%{__libtoolize} --ltdl
 # ltdl option copies libltdl sources
 aclocal
 %{__autoconf}
