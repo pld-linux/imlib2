@@ -1,60 +1,40 @@
-diff -urN imlib2-1.0.4.orig/configure.in imlib2-1.0.4/configure.in
---- imlib2-1.0.4.orig/configure.in	Thu Aug 30 04:40:08 2001
-+++ imlib2-1.0.4/configure.in	Mon Jan 21 12:02:43 2002
-@@ -43,8 +43,7 @@
+diff -urN imlib2-1.1.0.orig/configure.ac imlib2-1.1.0/configure.ac
+--- imlib2-1.1.0.orig/configure.ac	Thu Aug 30 04:40:08 2001
++++ imlib2-1.1.0/configure.ac	Mon Jan 21 12:02:43 2002
+@@ -43,7 +43,9 @@
  
  AC_C_BIGENDIAN	      
  
 -AC_LIBLTDL_CONVENIENCE
--AC_CONFIG_SUBDIRS(libltdl)
 +AC_LIBLTDL_INSTALLABLE
++AC_SUBST(LTDLINC)
++AC_SUBST(LIBLTDL)
+ AC_CONFIG_SUBDIRS(libltdl)
  
  AC_PROG_CC
- AM_PROG_CC_STDC
-@@ -158,7 +157,7 @@
- fi
- fi
- fi
--AC_CHECK_LIB(dl, dlopen, dlopen_libs=-ldl)
-+AC_CHECK_LIB(dl, dlopen, dlopen_libs=-ldl, [], -ldl)
- 
- EXTRA_LIBS="-L/usr/local/lib -L/usr/X11R6/lib"
- 
-diff -urN imlib2-1.0.4.orig/Makefile.am imlib2-1.0.4/Makefile.am.new
---- imlib2-1.0.4/Makefile.am	Thu Dec  6 20:52:43 2001
-+++ imlib2-1.0.4/Makefile.am.new	Thu Dec  6 20:52:06 2001
-@@ -9,7 +9,7 @@
- 		       ltconfig ltmain.sh missing mkinstalldirs \
- 		       stamp-h.in
- 
--SUBDIRS		     = libltdl src filters doc loaders
-+SUBDIRS		     = src filters doc loaders
- 
- bin_SCRIPTS = imlib2-config
- 
---- imlib2-1.0.4/src/Makefile.am	Thu Aug  2 07:09:35 2001
-+++ imlib2-1.0.4.new/src/Makefile.am	Thu Dec  6 22:12:21 2001
-@@ -6,7 +6,7 @@
- MAINTAINERCLEANFILES = Makefile.in loaderpath.h
+--- imlib2-1.1.0/src/Makefile.am.orig	2003-09-08 04:12:09.000000000 +0200
++++ imlib2-1.1.0/src/Makefile.am	2003-10-06 21:37:53.749441656 +0200
+@@ -7,7 +7,7 @@
  
  LDFLAGS		     = -L/usr/X11R6/lib
--INCLUDES	     = -I/usr/X11R6/include -I$(top_srcdir)/libltdl \
-+INCLUDES	     = -I/usr/X11R6/include \
-                        $(X_CFLAGS) -I$(prefix)/include -I$(includedir) \
- 		       -I. -I$(top_srcdir) -I$(top_srcdir)/src \
- 		       -I$(top_srcdir)/loaders
-@@ -31,12 +31,12 @@
+ INCLUDES             = -I. -I$(top_srcdir) -I$(top_srcdir)/src \
+-                       -I$(top_srcdir)/loaders -I$(top_srcdir)/libltdl \
++                       -I$(top_srcdir)/loaders $(LTDLINCL) \
+                        $(freetype_cflags) -I/usr/X11R6/include $(X_CFLAGS) \
+                        -I$(prefix)/include -I$(includedir)
+ MMX_SRCS             = asm_blend.S asm_rgba.S asm_scale.S asm_rotate.S \
+@@ -32,12 +32,12 @@
  
  if HAVE_MMX
  libImlib2_la_LIBADD   = $(X_OBJS) @DLLDFLAGS@ $(MMX_OBJS) \
 -                       $(top_builddir)/libltdl/libltdlc.la \
-+			-lltdl \
-                        $(x_libs) -lttf $(LDFLAGS)
++                       $(LIBLTDL) \
+                        $(x_libs) $(freetype_libs) $(LDFLAGS)
  libImlib2_la_DEPENDENCIES = $(top_builddir)/config.h $(X_OBJS) $(MMX_OBJS)
  else
  libImlib2_la_LIBADD   = $(X_OBJS) @DLLDFLAGS@ \
 -                       $(top_builddir)/libltdl/libltdlc.la \
-+			-lltdl \
-                        $(x_libs) -lttf $(LDFLAGS)
++                       $(LIBLTDL) \
+                        $(x_libs) $(freetype_libs) $(LDFLAGS)
  libImlib2_la_DEPENDENCIES = $(top_builddir)/config.h $(X_OBJS)
  endif

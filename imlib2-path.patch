@@ -1,6 +1,6 @@
-diff -urN imlib2-1.0.3.org/configure.in imlib2-1.0.3/configure.in
---- imlib2-1.0.3.org/configure.in	Tue May  1 16:24:25 2001
-+++ imlib2-1.0.3/configure.in	Tue May  1 16:26:54 2001
+diff -urN imlib2-1.1.0.org/configure.ac imlib2-1.1.0/configure.ac
+--- imlib2-1.1.0.org/configure.ac	Tue May  1 16:24:25 2001
++++ imlib2-1.1.0/configure.ac	Tue May  1 16:26:54 2001
 @@ -38,7 +38,7 @@
  fi
  AM_CONDITIONAL(HAVE_MMX, test x$mmx = xyes)

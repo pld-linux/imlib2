@@ -1,20 +1,18 @@
 Summary:	Powerful image loading and rendering library
 Summary(pl):	Potê¿na biblioteka wczytuj±ca i renderuj±ca obrazki
 Name:		imlib2
-Version:	1.0.6
-Release:	3
+Version:	1.1.0
+Release:	1
 License:	LGPL
 Group:		X11/Libraries
 Source0:	http://dl.sourceforge.net/enlightenment/%{name}-%{version}.tar.gz
-# Source0-md5: e3475376bf27347c47c7a9ffb49bdb96
+# Source0-md5:	1589ebb054da76734fe08ae570460034
 Patch0:		%{name}-path.patch
-Patch1:		%{name}-as.patch
-Patch2:		%{name}-ltdl.patch
-Patch3:		%{name}-AC_LIBOBJ.patch
+Patch1:		%{name}-ltdl.patch
 BuildRequires:	XFree86-devel
-BuildRequires:	autoconf
+BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
-BuildRequires:	freetype1-devel
+BuildRequires:	freetype-devel >= 2.0
 BuildRequires:	libjpeg-devel >= 6b-18
 BuildRequires:	libltdl-devel
 BuildRequires:	libpng-devel >= 1.0.8
@@ -42,52 +40,48 @@ dynamiczne filtry (w postaci binarnej), obs³uga jêzyka skryptowego i
 wiele wiêcej.
 
 %package devel
-Summary:	Imlib header files and development documentation
-Summary(fr):	Fichiers entête pour Imlib
-Summary(pl):	Pliki nag³ówkowe oraz dokumentacja do imlib
+Summary:	Imlib2 header files and development documentation
+Summary(fr):	Fichiers entête pour Imlib2
+Summary(pl):	Pliki nag³ówkowe oraz dokumentacja do imlib2
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}
-# Every program using imlib2 should get a list of libraries to link with by
-# executing `imlib2-config --libs`. All libraries listed below are returned by
-# this call, so they are required by every program compiled with imlib.
 Requires:	XFree86-devel
-Requires:	freetype1-devel
+Requires:	freetype-devel
 Requires:	libltdl-devel
 Obsoletes:	libimlib2_1-devel
 
 %description devel
-Header files and development documentation for Imlib.
+Header files and development documentation for Imlib2.
 
 %description devel -l fr
-Fichiers entête pour Imlib.
+Fichiers entête pour Imlib2.
 
 %description devel -l pl
-Pliki nag³ówkowe oraz dokumentacja do biblioteki Imlib.
+Pliki nag³ówkowe oraz dokumentacja do biblioteki Imlib2.
 
 %package static
-Summary:	Imlib static libraries
-Summary(pl):	Biblioteki statyczne imlib
+Summary:	Imlib2 static libraries
+Summary(pl):	Biblioteki statyczne imlib2
 Group:		X11/Development/Libraries
 Requires:	%{name}-devel = %{version}
 
 %description static
-Imlib static libraries.
+Imlib2 static libraries.
 
 %description static -l pl
-Biblioteki statyczne imlib.
+Biblioteki statyczne imlib2.
 
 %prep
 %setup -q
 %patch0 -p1
 %patch1 -p1
-%{!?_with_static_ltdl:%patch2 -p1}
-%patch3 -p1
 
 %build
-rm -f missing
-%{__libtoolize}
+rm -rf libltdl configure.in
+%{__libtoolize} --ltdl
 %{__aclocal}
 %{__autoconf}
+%{__autoheader}
 %{__automake}
 %configure \
 %ifarch i586 i686 athlon
@@ -106,7 +100,7 @@ rm -rf $RPM_BUILD_ROOT
 
 # no static plugins - shut up check-files
 # plugins are lt_dlopened w/o extension, so *.la should be left
-rm -f  $RPM_BUILD_ROOT%{_libdir}/%{name}/loaders/*/*.a
+rm -f $RPM_BUILD_ROOT%{_libdir}/%{name}/loaders/*/*.a
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -128,10 +122,11 @@ rm -rf $RPM_BUILD_ROOT
 %files devel
 %defattr(644,root,root,755)
 %doc doc/{*gif,*.html}
-%attr(755,root,root) %{_bindir}/%{name}-config
+%attr(755,root,root) %{_bindir}/imlib2-config
 %attr(755,root,root) %{_libdir}/lib*.so
 %{_libdir}/lib*.la
 %{_includedir}/*
+%{_pkgconfigdir}/imlib2.pc
 
 %files static
 %defattr(644,root,root,755)
