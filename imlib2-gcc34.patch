@@ -1,20 +1,18 @@
 --- imlib2-1.1.0/src/rgbadraw.c.orig	2003-07-13 03:21:23.000000000 +0200
-+++ imlib2-1.1.0/src/rgbadraw.c	2004-04-11 21:38:04.668183016 +0200
-@@ -2357,15 +2357,15 @@
-                        /* last span on line and still not < ss->x */
++++ imlib2-1.1.0/src/rgbadraw.c	2004-04-14 13:28:52.602509560 +0200
+@@ -2358,6 +2358,7 @@
                         if (ps)
                            ps->next = s;
--                     nospans:
+                      nospans:
++		     ;
                      }
                 }
-+	     nospans:			
               if (i == y2)
-                 goto nolines;
+@@ -2365,6 +2366,7 @@
               i += step;
            }
--      nolines:
+       nolines:
++      ;
       }
-+   nolines:    
     for (i = 0; i < h; i++)
       {
-         Span               *s;
