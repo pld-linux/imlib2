@@ -1,14 +1,13 @@
 Summary:	Powerful image loading and rendering library
 Summary(pl):	Potê¿na biblioteka wczytuj±ca i renderuj±ca obrazki
 Name:		imlib2
-Version:	1.2.0
-%define _snap	20050329
-Release:	1.%{_snap}.0.1
+Version:	1.2.1.004
+Release:	1
 License:	LGPL
 Group:		X11/Libraries
-#Source0:	http://dl.sourceforge.net/enlightenment/%{name}-%{version}.tar.gz
-Source0:	ftp://ftp.sparky.homelinux.org/pub/e17/%{name}-%{_snap}.tar.gz
-# Source0-md5:	cd77568626e5212ffcdbb881e407d8c6
+Source0:	http://enlightenment.freedesktop.org/files/%{name}-%{version}.tar.gz
+# Source0-md5:	9130e1b016eb392700c51baaa35c76cd
+URL:		http://enlightenment.org/Libraries/Imlib2/
 BuildRequires:	XFree86-devel
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
@@ -70,13 +69,13 @@ Imlib2 static libraries.
 Biblioteki statyczne imlib2.
 
 %prep
-%setup -q -n %{name}
+%setup -q
 
 sed -i -e 's@/lib -lX11@/%{_lib} -lX11@' configure.in
 
 %build
 %{__libtoolize}
-%{__aclocal} -I m4
+%{__aclocal}
 %{__autoconf}
 %{__autoheader}
 %{__automake}
