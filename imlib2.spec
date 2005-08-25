@@ -7,7 +7,7 @@ License:	LGPL
 Group:		X11/Libraries
 Source0:	http://dl.sourceforge.net/enlightenment/%{name}-%{version}.tar.gz
 # Source0-md5:	e32970d03d8aee2885782312d0a7f15f
-URL:		http://enlightenment.org/Libraries/Imlib2.html
+URL:		http://enlightenment.org/Libraries/Imlib2/
 BuildRequires:	XFree86-devel
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
