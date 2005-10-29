@@ -13,6 +13,7 @@ BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
 BuildRequires:	bzip2-devel
 BuildRequires:	freetype-devel >= 2.1
+BuildRequires:	libid3tag-devel
 BuildRequires:	libjpeg-devel >= 6b-18
 BuildRequires:	libltdl-devel
 BuildRequires:	libpng-devel >= 1.0.8
