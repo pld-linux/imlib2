@@ -8,7 +8,6 @@ Group:		X11/Libraries
 Source0:	http://dl.sourceforge.net/enlightenment/%{name}-%{version}.tar.gz
 # Source0-md5:	e32970d03d8aee2885782312d0a7f15f
 URL:		http://enlightenment.org/Libraries/Imlib2/
-BuildRequires:	XFree86-devel
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
 BuildRequires:	bzip2-devel
@@ -19,6 +18,7 @@ BuildRequires:	libpng-devel >= 1.0.8
 BuildRequires:	libtiff-devel
 BuildRequires:	libtool
 BuildRequires:	libungif-devel
+BuildRequires:	xorg-lib-libXext-devel
 Obsoletes:	libimlib2_1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -42,9 +42,9 @@ Summary(fr):	Fichiers entête pour Imlib2
 Summary(pl):	Pliki nag³ówkowe oraz dokumentacja do imlib2
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	XFree86-devel
 Requires:	freetype-devel
 Requires:	libltdl-devel
+Requires:	xorg-lib-libXext-devel
 Obsoletes:	libimlib2_1-devel
 
 %description devel
