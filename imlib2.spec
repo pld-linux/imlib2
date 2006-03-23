@@ -1,17 +1,18 @@
 Summary:	Powerful image loading and rendering library
 Summary(pl):	Potê¿na biblioteka wczytuj±ca i renderuj±ca obrazki
 Name:		imlib2
-Version:	1.2.1
-Release:	2
+Version:	1.2.2
+Release:	1
 License:	LGPL
 Group:		X11/Libraries
 Source0:	http://dl.sourceforge.net/enlightenment/%{name}-%{version}.tar.gz
-# Source0-md5:	e32970d03d8aee2885782312d0a7f15f
+# Source0-md5:	07b2a7745ddd3c7c4480b50cb916174c
 URL:		http://enlightenment.org/Libraries/Imlib2/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
 BuildRequires:	bzip2-devel
 BuildRequires:	freetype-devel >= 2.1
+BuildRequires:	libid3tag-devel
 BuildRequires:	libjpeg-devel >= 6b-18
 BuildRequires:	libltdl-devel
 BuildRequires:	libpng-devel >= 1.0.8
@@ -19,6 +20,7 @@ BuildRequires:	libtiff-devel
 BuildRequires:	libtool
 BuildRequires:	libungif-devel
 BuildRequires:	xorg-lib-libXext-devel
+BuildRequires:	zlib-devel
 Obsoletes:	libimlib2_1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -70,8 +72,6 @@ Biblioteki statyczne imlib2.
 
 %prep
 %setup -q
-
-sed -i -e 's@/lib -lX11@/%{_lib} -lX11@' configure.in
 
 %build
 %{__libtoolize}
