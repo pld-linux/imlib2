@@ -2,7 +2,7 @@ Summary:	Powerful image loading and rendering library
 Summary(pl):	Potê¿na biblioteka wczytuj±ca i renderuj±ca obrazki
 Name:		imlib2
 Version:	1.3.0
-Release:	1
+Release:	2
 License:	LGPL
 Group:		X11/Libraries
 Source0:	http://dl.sourceforge.net/enlightenment/%{name}-%{version}.tar.gz
@@ -100,6 +100,9 @@ rm -rf $RPM_BUILD_ROOT
 # plugins are lt_dlopened w/o extension, so *.la should be left
 rm -f $RPM_BUILD_ROOT%{_libdir}/imlib2/*/*.a
 
+# not needed
+rm -f $RPM_BUILD_ROOT%{_libdir}/imlib2/*/*.la
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -115,7 +118,6 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_libdir}/imlib2/filters
 %dir %{_libdir}/imlib2/loaders
 %attr(755,root,root) %{_libdir}/imlib2/*/*.so
-%{_libdir}/imlib2/*/*.la
 %{_datadir}/imlib2
 
 %files devel
