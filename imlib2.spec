@@ -1,5 +1,5 @@
 Summary:	Powerful image loading and rendering library
-Summary(pl):	Potê¿na biblioteka wczytuj±ca i renderuj±ca obrazki
+Summary(pl.UTF-8):   PotÄ™Å¼na biblioteka wczytujÄ…ca i renderujÄ…ca obrazki
 Name:		imlib2
 Version:	1.2.1.011
 Release:	1
@@ -30,17 +30,17 @@ speed than standard libraries, including font rasterization, rotation,
 RGBA space rendering and blending, dynamic binary filters, scripting,
 and more.
 
-%description -l pl
-Imlib2 jest zaawansowan± bibliotek±, zamiennikiem takich bibliotek jak
-libXpm. Imlib2 dostarcza o wiele wiêcej mo¿liwo¶ci przy du¿o wiêkszej
-szybko¶ci ni¿ standardowe biblioteki (w³±czaj±c w to rasteryzacjê
-fontów, obracanie, renderowanie przestrzeni RGBA, mieszanie, dynamiczne 
-filtry (w postaci binarnej), obs³uga jêzyka skryptowego i wiele wiêcej.
+%description -l pl.UTF-8
+Imlib2 jest zaawansowanÄ… bibliotekÄ…, zamiennikiem takich bibliotek jak
+libXpm. Imlib2 dostarcza o wiele wiÄ™cej moÅ¼liwoÅ›ci przy duÅ¼o wiÄ™kszej
+szybkoÅ›ci niÅ¼ standardowe biblioteki (wÅ‚Ä…czajÄ…c w to rasteryzacjÄ™
+fontÃ³w, obracanie, renderowanie przestrzeni RGBA, mieszanie, dynamiczne 
+filtry (w postaci binarnej), obsÅ‚uga jÄ™zyka skryptowego i wiele wiÄ™cej.
 
 %package devel
 Summary:	Imlib2 header files and development documentation
-Summary(fr):	Fichiers entête pour Imlib2
-Summary(pl):	Pliki nag³ówkowe oraz dokumentacja do imlib2
+Summary(fr.UTF-8):   Fichiers entÃªte pour Imlib2
+Summary(pl.UTF-8):   Pliki nagÅ‚Ã³wkowe oraz dokumentacja do imlib2
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	XFree86-devel
@@ -51,22 +51,22 @@ Obsoletes:	libimlib2_1-devel
 %description devel
 Header files and development documentation for Imlib2.
 
-%description devel -l fr
-Fichiers entête pour Imlib2.
+%description devel -l fr.UTF-8
+Fichiers entÃªte pour Imlib2.
 
-%description devel -l pl
-Pliki nag³ówkowe oraz dokumentacja do biblioteki Imlib2.
+%description devel -l pl.UTF-8
+Pliki nagÅ‚Ã³wkowe oraz dokumentacja do biblioteki Imlib2.
 
 %package static
 Summary:	Imlib2 static libraries
-Summary(pl):	Biblioteki statyczne imlib2
+Summary(pl.UTF-8):   Biblioteki statyczne imlib2
 Group:		X11/Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 Imlib2 static libraries.
 
-%description static -l pl
+%description static -l pl.UTF-8
 Biblioteki statyczne imlib2.
 
 %prep
