@@ -1,5 +1,5 @@
 Summary:	Powerful image loading and rendering library
-Summary(pl.UTF-8):   Potężna biblioteka wczytująca i renderująca obrazki
+Summary(pl.UTF-8):	Potężna biblioteka wczytująca i renderująca obrazki
 Name:		imlib2
 Version:	1.3.0
 Release:	2
@@ -41,8 +41,8 @@ filtry (w postaci binarnej), obsługa języka skryptowego i wiele więcej.
 
 %package devel
 Summary:	Imlib2 header files and development documentation
-Summary(fr.UTF-8):   Fichiers entête pour Imlib2
-Summary(pl.UTF-8):   Pliki nagłówkowe oraz dokumentacja do imlib2
+Summary(fr.UTF-8):	Fichiers entête pour Imlib2
+Summary(pl.UTF-8):	Pliki nagłówkowe oraz dokumentacja do imlib2
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	freetype-devel
@@ -61,7 +61,7 @@ Pliki nagłówkowe oraz dokumentacja do biblioteki Imlib2.
 
 %package static
 Summary:	Imlib2 static libraries
-Summary(pl.UTF-8):   Biblioteki statyczne imlib2
+Summary(pl.UTF-8):	Biblioteki statyczne imlib2
 Group:		X11/Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
