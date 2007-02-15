@@ -7,6 +7,7 @@ License:	LGPL
 Group:		X11/Libraries
 Source0:	http://dl.sourceforge.net/enlightenment/%{name}-%{version}.tar.gz
 # Source0-md5:	e32970d03d8aee2885782312d0a7f15f
+Patch0:		%{name}-ac-fix.patch
 URL:		http://enlightenment.org/Libraries/Imlib2/
 BuildRequires:	XFree86-devel
 BuildRequires:	autoconf >= 2.50
@@ -70,6 +71,7 @@ Biblioteki statyczne imlib2.
 
 %prep
 %setup -q
+%patch0 -p1
 
 sed -i -e 's@/lib -lX11@/%{_lib} -lX11@' configure.in
 
