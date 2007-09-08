@@ -1,12 +1,12 @@
 Summary:	Powerful image loading and rendering library
 Summary(pl.UTF-8):	Potężna biblioteka wczytująca i renderująca obrazki
 Name:		imlib2
-Version:	1.3.0
-Release:	2
+Version:	1.4.0
+Release:	1
 License:	LGPL
 Group:		X11/Libraries
 Source0:	http://dl.sourceforge.net/enlightenment/%{name}-%{version}.tar.gz
-# Source0-md5:	00b724fc6d2dcfa3045bb6a554bb2c8a
+# Source0-md5:	69f7ee996c943142332b4c98597b095c
 Patch0:		%{name}-ac.patch
 URL:		http://enlightenment.org/Libraries/Imlib2/
 BuildRequires:	autoconf >= 2.50
@@ -82,7 +82,7 @@ Biblioteki statyczne imlib2.
 %{__autoheader}
 %{__automake}
 %configure \
-%ifarch i586 i686 athlon
+%ifarch i586 i686 pentium3 pentium4 athlon
 	--enable-mmx
 %else
 	--disable-mmx
@@ -113,22 +113,23 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog README
 %attr(755,root,root) %{_bindir}/imlib2_*
-%attr(755,root,root) %{_libdir}/lib*.so.*.*.*
+%attr(755,root,root) %{_libdir}/libImlib2.so.*.*.*
 %dir %{_libdir}/imlib2
 %dir %{_libdir}/imlib2/filters
+%attr(755,root,root) %{_libdir}/imlib2/filters/*.so
 %dir %{_libdir}/imlib2/loaders
-%attr(755,root,root) %{_libdir}/imlib2/*/*.so
+%attr(755,root,root) %{_libdir}/imlib2/loaders/*.so
 %{_datadir}/imlib2
 
 %files devel
 %defattr(644,root,root,755)
 %doc doc/{*.gif,*.html}
 %attr(755,root,root) %{_bindir}/imlib2-config
-%attr(755,root,root) %{_libdir}/lib*.so
-%{_libdir}/lib*.la
+%attr(755,root,root) %{_libdir}/libImlib2.so
+%{_libdir}/libImlib2.la
 %{_includedir}/Imlib2.h
 %{_pkgconfigdir}/imlib2.pc
 
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/lib*.a
+%{_libdir}/libImlib2.a
