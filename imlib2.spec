@@ -8,7 +8,7 @@ Group:		X11/Libraries
 Source0:	http://dl.sourceforge.net/enlightenment/%{name}-%{version}.tar.gz
 # Source0-md5:	69f7ee996c943142332b4c98597b095c
 Patch0:		%{name}-ac.patch
-URL:		http://enlightenment.org/Libraries/Imlib2/
+URL:		http://enlightenment.org/p.php?p=about/libs/imlib2
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
 BuildRequires:	bzip2-devel
