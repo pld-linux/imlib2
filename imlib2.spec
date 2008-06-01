@@ -1,12 +1,12 @@
 Summary:	Powerful image loading and rendering library
 Summary(pl.UTF-8):	Potężna biblioteka wczytująca i renderująca obrazki
 Name:		imlib2
-Version:	1.4.0
+Version:	1.4.1.000
 Release:	1
 License:	BSD-like
 Group:		X11/Libraries
-Source0:	http://dl.sourceforge.net/enlightenment/%{name}-%{version}.tar.gz
-# Source0-md5:	69f7ee996c943142332b4c98597b095c
+Source0:	http://download.enlightenment.org/snapshots/2008-01-25/%{name}-%{version}.tar.bz2
+# Source0-md5:	cbb3180c80f12db01decd2ad4ae3a94a
 Patch0:		%{name}-ac.patch
 URL:		http://enlightenment.org/p.php?p=about/libs/imlib2
 BuildRequires:	autoconf >= 2.50
@@ -113,7 +113,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS COPYING COPYING-PLAIN ChangeLog README
 %attr(755,root,root) %{_bindir}/imlib2_*
-%attr(755,root,root) %{_libdir}/libImlib2.so.*.*.*
+%attr(755,root,root) %{_libdir}/libImlib2.so.*
 %dir %{_libdir}/imlib2
 %dir %{_libdir}/imlib2/filters
 %attr(755,root,root) %{_libdir}/imlib2/filters/*.so
