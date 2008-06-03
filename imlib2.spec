@@ -97,11 +97,7 @@ rm -rf $RPM_BUILD_ROOT
 	DESTDIR=$RPM_BUILD_ROOT
 
 # no static plugins - shut up check-files
-# plugins are lt_dlopened w/o extension, so *.la should be left
-rm -f $RPM_BUILD_ROOT%{_libdir}/imlib2/*/*.a
-
-# not needed
-rm -f $RPM_BUILD_ROOT%{_libdir}/imlib2/*/*.la
+rm -f $RPM_BUILD_ROOT%{_libdir}/imlib2/*/*.{a,la}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -113,7 +109,8 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS COPYING COPYING-PLAIN ChangeLog README
 %attr(755,root,root) %{_bindir}/imlib2_*
-%attr(755,root,root) %{_libdir}/libImlib2.so.*
+%attr(755,root,root) %{_libdir}/libImlib2.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libImlib2.so.1
 %dir %{_libdir}/imlib2
 %dir %{_libdir}/imlib2/filters
 %attr(755,root,root) %{_libdir}/imlib2/filters/*.so
