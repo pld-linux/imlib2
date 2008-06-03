@@ -9,8 +9,8 @@ Source0:	http://download.enlightenment.org/snapshots/2008-01-25/%{name}-%{versio
 # Source0-md5:	cbb3180c80f12db01decd2ad4ae3a94a
 Patch0:		%{name}-ac.patch
 URL:		http://enlightenment.org/p.php?p=about/libs/imlib2
-BuildRequires:	autoconf >= 2.50
-BuildRequires:	automake
+BuildRequires:	autoconf >= 2.52
+BuildRequires:	automake >= 1.6
 BuildRequires:	bzip2-devel
 BuildRequires:	freetype-devel >= 2.1
 BuildRequires:	giflib-devel
