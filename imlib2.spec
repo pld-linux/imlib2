@@ -1,12 +1,13 @@
+%define		_snap	20080813
 Summary:	Powerful image loading and rendering library
 Summary(pl.UTF-8):	Potężna biblioteka wczytująca i renderująca obrazki
 Name:		imlib2
-Version:	1.4.1.000
-Release:	1
+Version:	1.4.1.001
+Release:	0.%{_snap}.1
 License:	BSD-like
 Group:		X11/Libraries
-Source0:	http://download.enlightenment.org/snapshots/2008-01-25/%{name}-%{version}.tar.bz2
-# Source0-md5:	cbb3180c80f12db01decd2ad4ae3a94a
+Source0:	%{name}-%{version}-%{_snap}.tar.bz2
+# Source0-md5:	e118755bcd8ba89461a2e72029c88439
 Patch0:		%{name}-ac.patch
 URL:		http://enlightenment.org/p.php?p=about/libs/imlib2
 BuildRequires:	autoconf >= 2.52
@@ -72,7 +73,7 @@ Imlib2 static libraries.
 Biblioteki statyczne imlib2.
 
 %prep
-%setup -q
+%setup -q -n %{name}-%{version}-%{_snap}
 %patch0 -p1
 
 %build
