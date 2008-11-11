@@ -2,12 +2,12 @@
 Summary:	Powerful image loading and rendering library
 Summary(pl.UTF-8):	Potężna biblioteka wczytująca i renderująca obrazki
 Name:		imlib2
-Version:	1.4.1.001
-Release:	0.%{_snap}.1
+Version:	1.4.2
+Release:	1
 License:	BSD-like
 Group:		X11/Libraries
-Source0:	%{name}-%{version}-%{_snap}.tar.bz2
-# Source0-md5:	e118755bcd8ba89461a2e72029c88439
+Source0:	http://dl.sourceforge.net/enlightenment/%{name}-%{version}.tar.bz2
+# Source0-md5:	9f15568e76ebda9092c571e0df261f54
 Patch0:		%{name}-ac.patch
 URL:		http://enlightenment.org/p.php?p=about/libs/imlib2
 BuildRequires:	autoconf >= 2.52
@@ -37,8 +37,9 @@ and more.
 Imlib2 jest zaawansowaną biblioteką, zamiennikiem takich bibliotek jak
 libXpm. Imlib2 dostarcza o wiele więcej możliwości przy dużo większej
 szybkości niż standardowe biblioteki (włączając w to rasteryzację
-fontów, obracanie, renderowanie przestrzeni RGBA, mieszanie, dynamiczne 
-filtry (w postaci binarnej), obsługa języka skryptowego i wiele więcej.
+fontów, obracanie, renderowanie przestrzeni RGBA, mieszanie,
+dynamiczne filtry (w postaci binarnej), obsługa języka skryptowego i
+wiele więcej.
 
 %package devel
 Summary:	Imlib2 header files and development documentation
@@ -73,7 +74,7 @@ Imlib2 static libraries.
 Biblioteki statyczne imlib2.
 
 %prep
-%setup -q -n %{name}-%{version}-%{_snap}
+%setup -q
 %patch0 -p1
 
 %build
