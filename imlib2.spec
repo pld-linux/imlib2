@@ -21,6 +21,7 @@ BuildRequires:	libltdl-devel
 BuildRequires:	libpng-devel >= 1.0.8
 BuildRequires:	libtiff-devel
 BuildRequires:	libtool
+BuildRequires:	pkgconfig
 BuildRequires:	xorg-lib-libXext-devel
 BuildRequires:	zlib-devel
 Obsoletes:	libimlib2_1
