@@ -1,15 +1,12 @@
-%define		_snap	20080813
 Summary:	Powerful image loading and rendering library
 Summary(pl.UTF-8):	Potężna biblioteka wczytująca i renderująca obrazki
 Name:		imlib2
-Version:	1.4.2
-Release:	4
+Version:	1.4.4
+Release:	1
 License:	BSD-like
 Group:		X11/Libraries
-Source0:	http://dl.sourceforge.net/enlightenment/%{name}-%{version}.tar.bz2
-# Source0-md5:	9f15568e76ebda9092c571e0df261f54
-Patch0:		%{name}-ac.patch
-Patch1:		%{name}-libpng.patch
+Source0:	http://downloads.sourceforge.net/enlightenment/%{name}-%{version}.tar.bz2
+# Source0-md5:	b6de51879502e857d5b1f7622267a030
 URL:		http://enlightenment.org/p.php?p=about/libs/imlib2
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake >= 1.6
@@ -64,21 +61,19 @@ Fichiers entête pour Imlib2.
 Pliki nagłówkowe oraz dokumentacja do biblioteki Imlib2.
 
 %package static
-Summary:	Imlib2 static libraries
-Summary(pl.UTF-8):	Biblioteki statyczne imlib2
+Summary:	Imlib2 static library
+Summary(pl.UTF-8):	Biblioteka statyczna imlib2
 Group:		X11/Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
-Imlib2 static libraries.
+Imlib2 static library.
 
 %description static -l pl.UTF-8
-Biblioteki statyczne imlib2.
+Biblioteka statyczna imlib2.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
 
 %build
 %{__libtoolize}
@@ -87,6 +82,7 @@ Biblioteki statyczne imlib2.
 %{__autoheader}
 %{__automake}
 %configure \
+	--disable-silent-rules \
 %ifarch i586 i686 pentium3 pentium4 athlon
 	--enable-mmx
 %else
@@ -101,8 +97,8 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-# no static plugins - shut up check-files
-rm -f $RPM_BUILD_ROOT%{_libdir}/imlib2/*/*.{a,la}
+# not needed
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/imlib2/*/*.la
 
 %clean
 rm -rf $RPM_BUILD_ROOT
