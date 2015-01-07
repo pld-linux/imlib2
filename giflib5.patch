@@ -16,7 +16,7 @@
               h = gif->Image.Height;
  	     if (!IMAGE_DIMENSIONS_OK(w, h))
  	       {
-+#if GIFLIB_MAJOR >= 5
++#if (GIFLIB_MAJOR > 5) || ((GIFLIB_MAJOR == 5) && (GIFLIB_MINOR >= 1))
 +                  DGifCloseFile(gif, NULL);
 +#else
                    DGifCloseFile(gif);
@@ -26,7 +26,7 @@
               rows = malloc(h * sizeof(GifRowType *));
               if (!rows)
                 {
-+#if GIFLIB_MAJOR >= 5
++#if (GIFLIB_MAJOR > 5) || ((GIFLIB_MAJOR == 5) && (GIFLIB_MINOR >= 1))
 +                  DGifCloseFile(gif, NULL);
 +#else
                    DGifCloseFile(gif);
@@ -38,7 +38,7 @@
                    rows[i] = malloc(w * sizeof(GifPixelType));
                    if (!rows[i])
                      {
-+#if GIFLIB_MAJOR >= 5
++#if (GIFLIB_MAJOR > 5) || ((GIFLIB_MAJOR == 5) && (GIFLIB_MINOR >= 1))
 +                       DGifCloseFile(gif, NULL);
 +#else
                         DGifCloseFile(gif);
@@ -50,7 +50,7 @@
          im->data = (DATA32 *) malloc(sizeof(DATA32) * w * h);
          if (!im->data)
            {
-+#if GIFLIB_MAJOR >= 5
++#if (GIFLIB_MAJOR > 5) || ((GIFLIB_MAJOR == 5) && (GIFLIB_MINOR >= 1))
 +             DGifCloseFile(gif, NULL);
 +#else
               DGifCloseFile(gif);
@@ -62,7 +62,7 @@
                         last_per = (int)per;
                         if (!(progress(im, (int)per, 0, last_y, w, i)))
                           {
-+#if GIFLIB_MAJOR >= 5
++#if (GIFLIB_MAJOR > 5) || ((GIFLIB_MAJOR == 5) && (GIFLIB_MINOR >= 1))
 +                            DGifCloseFile(gif, NULL);
 +#else
                              DGifCloseFile(gif);
@@ -74,7 +74,7 @@
       {
          progress(im, 100, 0, last_y, w, h);
       }
-+#if GIFLIB_MAJOR >= 5
++#if (GIFLIB_MAJOR > 5) || ((GIFLIB_MAJOR == 5) && (GIFLIB_MINOR >= 1))
 +   DGifCloseFile(gif, NULL);
 +#else
     DGifCloseFile(gif);
