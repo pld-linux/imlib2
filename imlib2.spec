@@ -5,7 +5,7 @@ Version:	1.7.2
 Release:	1
 License:	BSD-like
 Group:		X11/Libraries
-Source0:	http://downloads.sourceforge.net/enlightenment/%{name}-%{version}.tar.bz2
+Source0:	https://downloads.sourceforge.net/enlightenment/%{name}-%{version}.tar.bz2
 # Source0-md5:	d24dc90ac08810d0a66bcd226e35a451
 URL:		https://docs.enlightenment.org/api/imlib2/html/
 BuildRequires:	autoconf >= 2.52
