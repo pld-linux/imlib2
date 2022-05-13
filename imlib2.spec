@@ -1,28 +1,35 @@
 Summary:	Powerful image loading and rendering library
 Summary(pl.UTF-8):	Potężna biblioteka wczytująca i renderująca obrazki
 Name:		imlib2
-Version:	1.7.4
-Release:	1
+Version:	1.9.0
+Release:	0.1
 License:	BSD-like
 Group:		X11/Libraries
-Source0:	https://downloads.sourceforge.net/enlightenment/%{name}-%{version}.tar.bz2
-# Source0-md5:	373ddc1978e5aa6e3a11bdb1a9d622c6
+Source0:	https://downloads.sourceforge.net/enlightenment/%{name}-%{version}.tar.xz
+# Source0-md5:	3a0e77546a6f2559f8a5bd493296a2ae
 URL:		https://docs.enlightenment.org/api/imlib2/html/
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake >= 1.6
 BuildRequires:	bzip2-devel
+BuildRequires:	doxygen
 BuildRequires:	freetype-devel >= 2.1
 BuildRequires:	giflib-devel
+BuildRequires:	libheif-devel
 BuildRequires:	libid3tag-devel
 BuildRequires:	libjpeg-devel >= 6b-18
+BuildRequires:	libjxl-devel
 BuildRequires:	libpng-devel >= 1.0.8
+BuildRequires:	librsvg-devel
+BuildRequires:	libspectre
 BuildRequires:	libtiff-devel
 BuildRequires:	libtool
 BuildRequires:	libwebp-devel
 BuildRequires:	libxcb-devel >= 1.9
+BuildRequires:	openjpeg2-devel
 BuildRequires:	pkgconfig
 BuildRequires:	xorg-lib-libX11-devel
 BuildRequires:	xorg-lib-libXext-devel
+BuildRequires:	xz-devel
 BuildRequires:	zlib-devel
 Requires:	freetype >= 2.1
 Requires:	libjpeg >= 6b-18
@@ -82,17 +89,16 @@ Biblioteka statyczna imlib2.
 %setup -q
 
 %build
-%{__libtoolize}
-%{__aclocal}
-%{__autoconf}
-%{__autoheader}
-%{__automake}
 %configure \
 	--disable-silent-rules \
+	--enable-doc-build \
 %ifarch i586 i686 pentium3 pentium4 athlon
-	--enable-mmx
+	--enable-mmx \
 %else
-	--disable-mmx
+	--disable-mmx \
+%endif
+%ifarch x86_64
+	--enable-amd64 \
 %endif
 
 %{__make}
@@ -127,8 +133,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
-%doc doc/{*.gif,*.html}
-%attr(755,root,root) %{_bindir}/imlib2-config
+%doc doc/html
 %attr(755,root,root) %{_libdir}/libImlib2.so
 %{_libdir}/libImlib2.la
 %{_includedir}/Imlib2.h
