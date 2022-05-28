@@ -1,8 +1,11 @@
+# Conditional build:
+%bcond_with	ps            # enable postscript support
+
 Summary:	Powerful image loading and rendering library
 Summary(pl.UTF-8):	Potężna biblioteka wczytująca i renderująca obrazki
 Name:		imlib2
 Version:	1.9.0
-Release:	0.1
+Release:	1
 License:	BSD-like
 Group:		X11/Libraries
 Source0:	https://downloads.sourceforge.net/enlightenment/%{name}-%{version}.tar.xz
@@ -20,7 +23,7 @@ BuildRequires:	libjpeg-devel >= 6b-18
 BuildRequires:	libjxl-devel
 BuildRequires:	libpng-devel >= 1.0.8
 BuildRequires:	librsvg-devel
-BuildRequires:	libspectre
+%{?with_ps:BuildRequires:    libspectre-devel}
 BuildRequires:	libtiff-devel
 BuildRequires:	libtool
 BuildRequires:	libwebp-devel
@@ -92,6 +95,7 @@ Biblioteka statyczna imlib2.
 %configure \
 	--disable-silent-rules \
 	--enable-doc-build \
+	%{!?with_ps:--without-ps} \
 %ifarch i586 i686 pentium3 pentium4 athlon
 	--enable-mmx \
 %else
