@@ -1,15 +1,16 @@
+#
 # Conditional build:
 %bcond_with	ps            # enable postscript support
 
 Summary:	Powerful image loading and rendering library
 Summary(pl.UTF-8):	Potężna biblioteka wczytująca i renderująca obrazki
 Name:		imlib2
-Version:	1.9.0
-Release:	2
+Version:	1.9.1
+Release:	1
 License:	BSD-like
 Group:		X11/Libraries
 Source0:	https://downloads.sourceforge.net/enlightenment/%{name}-%{version}.tar.xz
-# Source0-md5:	3a0e77546a6f2559f8a5bd493296a2ae
+# Source0-md5:	596fd0664538adb7867aa609fb718147
 URL:		https://docs.enlightenment.org/api/imlib2/html/
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake >= 1.6
@@ -22,23 +23,25 @@ BuildRequires:	libid3tag-devel
 BuildRequires:	libjpeg-devel >= 6b-18
 BuildRequires:	libjxl-devel
 BuildRequires:	libpng-devel >= 1.0.8
-BuildRequires:	librsvg-devel
+BuildRequires:	librsvg-devel >= 2.46
 %{?with_ps:BuildRequires:    libspectre-devel}
-BuildRequires:	libtiff-devel
-BuildRequires:	libtool
+BuildRequires:	libtiff-devel >= 4
+BuildRequires:	libtool >= 2:2
 BuildRequires:	libwebp-devel
 BuildRequires:	libxcb-devel >= 1.9
-BuildRequires:	openjpeg2-devel
+BuildRequires:	openjpeg2-devel >= 2
 BuildRequires:	pkgconfig
+BuildRequires:	tar >= 1:1.22
 BuildRequires:	xorg-lib-libX11-devel
 BuildRequires:	xorg-lib-libXext-devel
+BuildRequires:	xz
 BuildRequires:	xz-devel
 BuildRequires:	zlib-devel
 Requires:	freetype >= 2.1
 Requires:	libjpeg >= 6b-18
 Requires:	libpng >= 1.0.8
 Requires:	libxcb >= 1.9
-Obsoletes:	libimlib2_1
+Obsoletes:	libimlib2_1 < 2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -65,7 +68,7 @@ Requires:	%{name} = %{version}-%{release}
 Requires:	freetype-devel
 Requires:	libltdl-devel
 Requires:	xorg-lib-libXext-devel
-Obsoletes:	libimlib2_1-devel
+Obsoletes:	libimlib2_1-devel < 2
 
 %description devel
 Header files and development documentation for Imlib2.
@@ -91,7 +94,16 @@ Biblioteka statyczna imlib2.
 %prep
 %setup -q
 
+# missing in dist tarball, make a stub
+install -d test
+touch test/Makefile.am
+
 %build
+%{__libtoolize}
+%{__aclocal} -I m4
+%{__autoconf}
+%{__autoheader}
+%{__automake}
 %configure \
 	--disable-silent-rules \
 	--enable-doc-build \
@@ -101,7 +113,7 @@ Biblioteka statyczna imlib2.
 %else
 	--disable-mmx \
 %endif
-%ifarch x86_64
+%ifarch %{x8664}
 	--enable-amd64 \
 %endif
 
@@ -115,6 +127,8 @@ rm -rf $RPM_BUILD_ROOT
 
 # not needed
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/imlib2/*/*.la
+# obsoleted by pkg-config
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/libImlib2.la
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -139,7 +153,6 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc doc/html
 %attr(755,root,root) %{_libdir}/libImlib2.so
-%{_libdir}/libImlib2.la
 %{_includedir}/Imlib2.h
 %{_pkgconfigdir}/imlib2.pc
 
