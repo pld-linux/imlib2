@@ -41,6 +41,7 @@ Requires:	freetype >= 2.1
 Requires:	libjpeg >= 6b-18
 Requires:	libpng >= 1.0.8
 Requires:	libxcb >= 1.9
+Conflicts:	imlib2_loaders < 1.10.0
 Obsoletes:	libimlib2_1 < 2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
