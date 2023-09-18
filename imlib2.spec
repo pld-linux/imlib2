@@ -1,6 +1,7 @@
 #
 # Conditional build:
-%bcond_with	ps            # enable postscript support
+%bcond_without	jxl	# JPEG XL loader
+%bcond_with	ps	# enable postscript support
 
 Summary:	Powerful image loading and rendering library
 Summary(pl.UTF-8):	Potężna biblioteka wczytująca i renderująca obrazki
@@ -21,7 +22,7 @@ BuildRequires:	giflib-devel
 BuildRequires:	libheif-devel
 BuildRequires:	libid3tag-devel
 BuildRequires:	libjpeg-devel >= 6b-18
-BuildRequires:	libjxl-devel
+%{?with_jxl:BuildRequires:	libjxl-devel}
 BuildRequires:	libpng-devel >= 1.0.8
 BuildRequires:	librsvg-devel >= 2.46
 %{?with_ps:BuildRequires:    libspectre-devel}
@@ -117,6 +118,7 @@ touch test/Makefile.am
 %ifarch %{x8664}
 	--enable-amd64 \
 %endif
+	%{!?with_jxl:--without-jxl}
 
 %{__make}
 
