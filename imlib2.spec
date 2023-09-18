@@ -6,12 +6,12 @@
 Summary:	Powerful image loading and rendering library
 Summary(pl.UTF-8):	Potężna biblioteka wczytująca i renderująca obrazki
 Name:		imlib2
-Version:	1.10.0
-Release:	2
+Version:	1.12.0
+Release:	1
 License:	BSD-like
 Group:		X11/Libraries
 Source0:	https://downloads.sourceforge.net/enlightenment/%{name}-%{version}.tar.xz
-# Source0-md5:	8f692caffa3069d0da2aa87aa6cf5444
+# Source0-md5:	df88d9a70ba5d8f64660cad49f89cf66
 URL:		https://docs.enlightenment.org/api/imlib2/html/
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake >= 1.6
@@ -24,12 +24,14 @@ BuildRequires:	libid3tag-devel
 BuildRequires:	libjpeg-devel >= 6b-18
 %{?with_jxl:BuildRequires:	libjxl-devel}
 BuildRequires:	libpng-devel >= 1.0.8
+BuildRequires:	libraw-devel
 BuildRequires:	librsvg-devel >= 2.46
 %{?with_ps:BuildRequires:    libspectre-devel}
 BuildRequires:	libtiff-devel >= 4
 BuildRequires:	libtool >= 2:2
 BuildRequires:	libwebp-devel
 BuildRequires:	libxcb-devel >= 1.9
+BuildRequires:	libyuv-devel
 BuildRequires:	openjpeg2-devel >= 2
 BuildRequires:	pkgconfig
 BuildRequires:	tar >= 1:1.22
