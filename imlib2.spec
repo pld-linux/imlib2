@@ -1,7 +1,8 @@
 #
 # Conditional build:
-%bcond_without	jxl	# JPEG XL loader
-%bcond_with	ps	# enable postscript support
+%bcond_without	jxl		# JPEG XL loader
+%bcond_with	ps		# enable postscript support
+%bcond_without	static_libs	# static library
 
 Summary:	Powerful image loading and rendering library
 Summary(pl.UTF-8):	Potężna biblioteka wczytująca i renderująca obrazki
@@ -34,6 +35,7 @@ BuildRequires:	libxcb-devel >= 1.9
 BuildRequires:	libyuv-devel
 BuildRequires:	openjpeg2-devel >= 2
 BuildRequires:	pkgconfig
+BuildRequires:	rpmbuild(macros) >= 1.527
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xorg-lib-libX11-devel
 BuildRequires:	xorg-lib-libXext-devel
@@ -110,6 +112,7 @@ touch test/Makefile.am
 %{__automake}
 %configure \
 	--disable-silent-rules \
+	%{__enable_disable static_libs static} \
 	--enable-doc-build \
 	%{!?with_ps:--without-ps} \
 %ifarch i586 i686 pentium3 pentium4 athlon
@@ -162,6 +165,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/Imlib2_Loader.h
 %{_pkgconfigdir}/imlib2.pc
 
+%if %{with static_libs}
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/libImlib2.a
+%endif
