@@ -1,6 +1,7 @@
 #
 # Conditional build:
 %bcond_without	jxl		# JPEG XL loader
+%bcond_without	heif		# HEIF loader
 %bcond_with	ps		# enable postscript support
 %bcond_without	static_libs	# static library
 
@@ -20,7 +21,7 @@ BuildRequires:	bzip2-devel
 BuildRequires:	doxygen
 BuildRequires:	freetype-devel >= 2.1
 BuildRequires:	giflib-devel
-BuildRequires:	libheif-devel
+%{?with_heif:BuildRequires:	libheif-devel}
 BuildRequires:	libid3tag-devel
 BuildRequires:	libjpeg-devel >= 6b-18
 %{?with_jxl:BuildRequires:	libjxl-devel}
@@ -123,6 +124,7 @@ touch test/Makefile.am
 %ifarch %{x8664}
 	--enable-amd64 \
 %endif
+	%{!?with_heif:--without-heif} \
 	%{!?with_jxl:--without-jxl}
 
 %{__make}
