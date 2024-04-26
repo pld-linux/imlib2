@@ -2,14 +2,14 @@
 # Conditional build:
 %bcond_without	jxl		# JPEG XL loader
 %bcond_without	heif		# HEIF loader
-%bcond_with	ps		# enable postscript support
+%bcond_with	ps		# PostScript support
 %bcond_without	static_libs	# static library
 
 Summary:	Powerful image loading and rendering library
 Summary(pl.UTF-8):	Potężna biblioteka wczytująca i renderująca obrazki
 Name:		imlib2
 Version:	1.12.2
-Release:	1
+Release:	2
 License:	BSD-like
 Group:		X11/Libraries
 Source0:	https://downloads.sourceforge.net/enlightenment/%{name}-%{version}.tar.xz
