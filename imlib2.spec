@@ -2,18 +2,19 @@
 # Conditional build:
 %bcond_without	jxl		# JPEG XL loader
 %bcond_without	heif		# HEIF loader
+%bcond_without	avif		# AVIF loader
 %bcond_with	ps		# PostScript support
 %bcond_without	static_libs	# static library
 
 Summary:	Powerful image loading and rendering library
 Summary(pl.UTF-8):	Potężna biblioteka wczytująca i renderująca obrazki
 Name:		imlib2
-Version:	1.12.3
-Release:	2
+Version:	1.12.4
+Release:	1
 License:	BSD-like
 Group:		X11/Libraries
 Source0:	https://downloads.sourceforge.net/enlightenment/%{name}-%{version}.tar.xz
-# Source0-md5:	93e5b769ed02a183dfd78569f7b0fbe3
+# Source0-md5:	b2f6d612ac5282c989cb73ea41246d45
 URL:		https://docs.enlightenment.org/api/imlib2/html/
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake >= 1.6
@@ -21,6 +22,7 @@ BuildRequires:	bzip2-devel
 BuildRequires:	doxygen
 BuildRequires:	freetype-devel >= 2.1
 BuildRequires:	giflib-devel
+%{?with_avif:BuildRequires:	libavif-devel}
 %{?with_heif:BuildRequires:	libheif-devel}
 BuildRequires:	libid3tag-devel
 BuildRequires:	libjpeg-devel >= 6b-18
@@ -124,6 +126,7 @@ touch test/Makefile.am
 %ifarch %{x8664}
 	--enable-amd64 \
 %endif
+	%{!?with_avif:--without-avif} \
 	%{!?with_heif:--without-heif} \
 	%{!?with_jxl:--without-jxl}
 
