@@ -9,12 +9,12 @@
 Summary:	Powerful image loading and rendering library
 Summary(pl.UTF-8):	Potężna biblioteka wczytująca i renderująca obrazki
 Name:		imlib2
-Version:	1.12.4
+Version:	1.12.5
 Release:	1
 License:	BSD-like
 Group:		X11/Libraries
 Source0:	https://downloads.sourceforge.net/enlightenment/%{name}-%{version}.tar.xz
-# Source0-md5:	b2f6d612ac5282c989cb73ea41246d45
+# Source0-md5:	c81c9f91d92ecbd87cf652f867ec5d74
 URL:		https://docs.enlightenment.org/api/imlib2/html/
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake >= 1.6
